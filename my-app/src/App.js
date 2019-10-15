@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import Cockpit from './components/Cockpit/Cockpit';
 
 class App extends Component {
 
@@ -7,7 +8,7 @@ class App extends Component {
 
   return (
     <div className="App">
-      <h1>Initial Text</h1>
+      <Cockpit/>
     </div>
   );
 }
