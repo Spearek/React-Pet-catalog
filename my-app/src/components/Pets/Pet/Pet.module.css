@@ -1,0 +1,20 @@
+.petContainer{
+    width: 40%;
+    display:flex;
+    justify-content: flex-start;
+    margin: 20px auto;
+    border: 2px dotted rgb(185, 139, 13); 
+    text-align: left;
+}
+
+.petAvatar{
+    width: 45%;
+}
+
+.petAvatar img{
+    width:100%;
+}
+
+.petInfo{
+    padding-left: 20px;
+}
