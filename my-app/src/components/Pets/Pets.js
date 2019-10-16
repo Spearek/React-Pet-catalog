@@ -11,7 +11,8 @@ const pets = props =>{
         petName={el.name}
         petAge={currentYear - el.birthYear}
         petSpecies={el.species}
-        petPhoto={el.photo}/>)
+        petPhoto={el.photo}
+        key={el.key}/>)
     });
 
 
