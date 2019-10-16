@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Cockpit from './components/Cockpit/Cockpit';
+import Pets from './components/Pets/Pets';
 
 class App extends Component {
   state={
@@ -32,6 +33,7 @@ class App extends Component {
   return (
     <div className="App">
       <Cockpit/>
+      <Pets petList={this.state.pets}/>
     </div>
   );
 }
