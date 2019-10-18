@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './Cockpit.module.css';
+import SpeciesSelect from './speciesSelect/speciesSelect';
 
 
 const cockpit = () =>{
@@ -12,9 +13,7 @@ const cockpit = () =>{
             </div>
             <div className={classes.rightElements}>
                 <p>Filtry</p>
-                <select>
-                <option value="">Gatunki</option>
-                </select>
+                <SpeciesSelect/>
             </div>
         </div>
     )
