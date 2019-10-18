@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Pet.module.css';
 
+
 const pet = props =>{
 
     return(
@@ -12,7 +13,8 @@ const pet = props =>{
             <div className={classes.petInfo}>
                 <p>Imię: {props.petName}</p>
                 <p>Wiek: {props.petAge}</p>
-                <p>Gatunek: {props.petSpecies}</p>                
+                <p>Gatunek: {props.petSpecies}</p>
+                <img className={classes.remove} src={require('../../../assets/photoshop slices/delete.png')} alt='delete button' />            
             </div>
         </div>
     )

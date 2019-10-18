@@ -5,6 +5,7 @@
     margin: 20px auto;
     border: 2px dotted rgb(185, 139, 13); 
     text-align: left;
+    position: relative;
 }
 
 .petAvatar{
@@ -17,4 +18,11 @@
 
 .petInfo{
     padding-left: 20px;
+}
+
+.remove{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
 }
