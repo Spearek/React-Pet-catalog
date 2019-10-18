@@ -28,7 +28,11 @@ class App extends Component {
       birthYear: 2012,
       photo: "https://learnwebcode.github.io/json-example/images/cat-1.jpg",
       key: 'fskadjv'
-    }]
+    }],
+    speciesList: []
+  }
+  componentDidMount(){
+    this.speciesListHandler();
   }
 
   removePetHandler = (petKey) =>{
@@ -38,6 +42,16 @@ class App extends Component {
     });
     newPetArr.splice(petPosition,1);
     this.setState({pets: newPetArr }); // dodać komunikat gdy nie ma żadnych zwierzaków do wyświetlenia
+  }
+  
+  speciesListHandler = ()=>{
+    const list = this.state.pets.map(el =>{
+      return el.species;
+    }).reduce((acc,val)=>{
+      if(acc.indexOf(val)< 0) acc.push(val);
+      return acc;
+    },[]);
+    this.setState({speciesList:list});
   }
 
   render(){
