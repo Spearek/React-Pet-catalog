@@ -14,7 +14,7 @@ const pet = props =>{
                 <p>Imię: {props.petName}</p>
                 <p>Wiek: {props.petAge}</p>
                 <p>Gatunek: {props.petSpecies}</p>
-                <img className={classes.remove} src={require('../../../assets/photoshop slices/delete.png')} alt='delete button' />            
+                <img className={classes.remove} onClick={props.click} src={require('../../../assets/photoshop slices/delete.png')} alt='delete button' />            
             </div>
         </div>
     )

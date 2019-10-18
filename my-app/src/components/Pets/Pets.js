@@ -12,7 +12,8 @@ const pets = props =>{
         petAge={currentYear - el.birthYear}
         petSpecies={el.species}
         petPhoto={el.photo}
-        key={el.key}/>)
+        key={el.key}
+        click={props.click.bind(this,el.key)}/>)
     });
 
 
