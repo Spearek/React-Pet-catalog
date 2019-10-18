@@ -31,12 +31,21 @@ class App extends Component {
     }]
   }
 
+  removePetHandler = (petKey) =>{
+    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
+    const petPosition = newPetArr.findIndex(el => {   //zabezpieczyć na wypadek zwrotu -1;
+      return el.key === petKey  
+    });
+    newPetArr.splice(petPosition,1);
+    this.setState({pets: newPetArr }); // dodać komunikat gdy nie ma żadnych zwierzaków do wyświetlenia
+  }
+
   render(){
 
   return (
     <div className="App">
       <Cockpit/>
-      <Pets petList={this.state.pets}/>
+      <Pets petList={this.state.pets} click={this.removePetHandler}/>
     </div>
   );
 }
