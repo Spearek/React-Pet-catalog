@@ -64,7 +64,8 @@ class App extends Component {
     <div className="App">
       <Cockpit
       selected={this.state.speciesSelectVal}
-      change={this.speciesFilterHandler}/>
+      change={this.speciesFilterHandler}
+      speciesList={this.state.speciesList}/>
       
       <Pets petList={this.state.pets} click={this.removePetHandler}/>
     </div>
