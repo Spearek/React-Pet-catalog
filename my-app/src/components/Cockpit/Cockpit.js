@@ -4,6 +4,7 @@ import SpeciesFilter from './speciesFilter/speciesFilter';
 
 
 const cockpit = props =>{
+    
     return(
         <div className={classes.container}>
             <div className={classes.leftElements}>
@@ -15,7 +16,8 @@ const cockpit = props =>{
                 <p>Filtry</p>
                 <SpeciesFilter
                 selected={props.selected}
-                change={props.change}/>
+                change={props.change}
+                list={props.speciesList}/>
                 
             </div>
         </div>
