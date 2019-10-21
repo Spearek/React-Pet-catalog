@@ -54,13 +54,18 @@ class App extends Component {
     },[]);
     this.setState({speciesList:list});
   }
+  speciesSelectHandler = (event)=>{
+    this.setState({speciesSelectVal: event.target.value});
+  }
 
   render(){
 
   return (
     <div className="App">
       <Cockpit
-      selected={this.state.speciesSelectVal}/>
+      selected={this.state.speciesSelectVal}
+      change={this.speciesSelectHandler}/>
+      
       <Pets petList={this.state.pets} click={this.removePetHandler}/>
     </div>
   );
