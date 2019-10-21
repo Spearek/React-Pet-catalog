@@ -1,6 +1,6 @@
 import React from 'react';
 
-const speciesSelect = props =>{
+const speciesFilter = props =>{
 
     return(
         <select value ={props.selected} onChange={props.change}>
@@ -12,4 +12,4 @@ const speciesSelect = props =>{
 }
 
 
-export default speciesSelect;
+export default speciesFilter;

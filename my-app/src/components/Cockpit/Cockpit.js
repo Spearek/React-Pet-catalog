@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Cockpit.module.css';
-import SpeciesSelect from './speciesSelect/speciesSelect';
+import SpeciesFilter from './speciesFilter/speciesFilter';
 
 
 const cockpit = props =>{
@@ -13,7 +13,7 @@ const cockpit = props =>{
             </div>
             <div className={classes.rightElements}>
                 <p>Filtry</p>
-                <SpeciesSelect
+                <SpeciesFilter
                 selected={props.selected}
                 change={props.change}/>
                 
