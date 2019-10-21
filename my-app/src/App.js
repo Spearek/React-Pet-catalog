@@ -29,7 +29,8 @@ class App extends Component {
       photo: "https://learnwebcode.github.io/json-example/images/cat-1.jpg",
       key: 'fskadjv'
     }],
-    speciesList: []
+    speciesList: [],
+    speciesSelectVal: 'default'
   }
   componentDidMount(){
     this.speciesListHandler();
@@ -58,7 +59,8 @@ class App extends Component {
 
   return (
     <div className="App">
-      <Cockpit/>
+      <Cockpit
+      selected={this.state.speciesSelectVal}/>
       <Pets petList={this.state.pets} click={this.removePetHandler}/>
     </div>
   );
