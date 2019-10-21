@@ -3,7 +3,7 @@ import classes from './Cockpit.module.css';
 import SpeciesSelect from './speciesSelect/speciesSelect';
 
 
-const cockpit = () =>{
+const cockpit = props =>{
     return(
         <div className={classes.container}>
             <div className={classes.leftElements}>
@@ -13,7 +13,10 @@ const cockpit = () =>{
             </div>
             <div className={classes.rightElements}>
                 <p>Filtry</p>
-                <SpeciesSelect/>
+                <SpeciesSelect
+                selected={props.selected}
+                change={props.change}/>
+                
             </div>
         </div>
     )
