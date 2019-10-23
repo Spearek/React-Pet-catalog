@@ -67,7 +67,10 @@ class App extends Component {
       change={this.speciesFilterHandler}
       speciesList={this.state.speciesList}/>
       
-      <Pets petList={this.state.pets} click={this.removePetHandler}/>
+      <Pets 
+      petList={this.state.pets} 
+      click={this.removePetHandler}
+      visiblity={this.state.speciesSelectVal}/>
     </div>
   );
 }
