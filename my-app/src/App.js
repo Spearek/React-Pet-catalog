@@ -62,19 +62,6 @@ class App extends Component {
     this.setState({speciesSelectVal: event.target.value});
   }
 
-  nameSortHandler = () =>{
-    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
-    newPetArr.sort((a, b) => (a.name > b.name) ? 1 : -1)
-    this.setState({pets:newPetArr});
-
-  }
-  ageSortHandler = () =>{
-    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
-    newPetArr.sort((a, b) => (a.birthYear < b.birthYear) ? 1 : -1)
-    this.setState({pets:newPetArr});
-
-  }
-
   sortHandler = (property) =>{
     const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
     newPetArr.sort((a, b) => (a.name > b.name) ? 1 : -1);
