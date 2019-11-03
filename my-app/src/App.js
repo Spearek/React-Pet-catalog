@@ -30,8 +30,12 @@ class App extends Component {
       key: 'fskadjv'
     }],
     speciesList: [],
-    speciesSelectVal: 'default'
-
+    speciesSelectVal: 'default',
+    sortedBy: {
+      birthYear: false,
+      name: false
+    }
+  }
   componentDidMount(){
     this.speciesListHandler();
   }
