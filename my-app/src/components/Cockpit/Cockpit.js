@@ -9,8 +9,8 @@ const cockpit = props =>{
         <div className={classes.container}>
             <div className={classes.leftElements}>
                 <p>Sortowanie</p>
-                <button onClick={props.ageSort}>WIEK</button>
-                <button onClick={props.nameSort}>IMIE</button>
+                <button onClick={props.sort.bind(this,'birthYear')}>WIEK</button>
+                <button onClick={props.sort.bind(this,'name')}>IMIE</button>
             </div>
             <div className={classes.rightElements}>
                 <p>Filtry</p>

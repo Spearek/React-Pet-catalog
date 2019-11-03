@@ -31,7 +31,7 @@ class App extends Component {
     }],
     speciesList: [],
     speciesSelectVal: 'default'
-  }
+
   componentDidMount(){
     this.speciesListHandler();
   }
@@ -71,6 +71,13 @@ class App extends Component {
 
   }
 
+  sortHandler = (property) =>{
+    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
+    newPetArr.sort((a, b) => (a.name > b.name) ? 1 : -1);
+    if (property === 'birthYear') newPetArr.reverse();
+    this.setState({pets:newPetArr});
+  }
+
   render(){
 
   return (
@@ -79,8 +86,7 @@ class App extends Component {
       selected={this.state.speciesSelectVal}
       change={this.speciesFilterHandler}
       speciesList={this.state.speciesList}
-      nameSort={this.nameSortHandler}
-      ageSort={this.ageSortHandler}/>
+      sort={this.sortHandler}/>
       
       <Pets 
       petList={this.state.pets} 
