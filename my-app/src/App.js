@@ -9,7 +9,7 @@ class App extends Component {
     {
       name: "Purrsloud",
       species: "Cat",
-      favFoods: ["wet food", "dry food", "<strong>any</strong> food"],
+      favFoods: ["wet food", "dry food", "any food"],
       birthYear: 2016,
       photo: "https://learnwebcode.github.io/json-example/images/cat-2.jpg",
       key: 'dsklfjaad'
