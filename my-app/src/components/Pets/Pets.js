@@ -13,13 +13,12 @@ const pets = props =>{
                 petAge={currentYear - el.birthYear}
                 petSpecies={el.species}
                 petPhoto={el.photo}
+                food={el.favFoods}
                 key={el.key}
                 click={props.click.bind(this,el.key)}/>)
         }
         return null;
     });
-
-
 
     return(
 
