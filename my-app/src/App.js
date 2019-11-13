@@ -3,6 +3,7 @@ import './App.css';
 import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 
+
 class App extends Component {
   state={
     pets:[
@@ -83,6 +84,7 @@ class App extends Component {
       petList={this.state.pets} 
       click={this.removePetHandler}
       visiblity={this.state.speciesSelectVal}/>
+      <img src={require("./assets/photoshop slices/plus.png")}/>
     </div>
   );
 }
