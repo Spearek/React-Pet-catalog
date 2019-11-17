@@ -76,6 +76,18 @@ class App extends Component {
     if (property === 'birthYear') newPetArr.reverse();
     this.setState({pets:newPetArr});
   }
+  inputChangeHandler = (event,type) =>{
+    const inputIndex = this.state.newPet.findIndex(el =>{
+      return el.type === type;
+    });
+    const input = {
+      ...this.state.newPet[inputIndex]
+    }
+    input.value = event.target.value;
+    const newPetList= JSON.parse(JSON.stringify(this.state.newPet));
+    newPetList[inputIndex] = input;
+    this.setState({newPet : newPetList});
+  }
 
   render(){
 
@@ -92,7 +104,9 @@ class App extends Component {
       click={this.removePetHandler}
       visiblity={this.state.speciesSelectVal}/>
 
-      <Modal/>
+      <Modal
+      inputs={this.state.newPet}
+      inputHandler={this.inputChangeHandler}/>
 
     </div>
   );
