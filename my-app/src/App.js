@@ -36,7 +36,13 @@ class App extends Component {
     sortedBy: {
       birthYear: false,
       name: false
-    }
+    },
+    newPet:[
+      {type: 'Imię', value: ''},
+      {type: 'Rok urodzenia', value: ''},
+      {type: 'Gatunek', value: ''},
+      {type: 'Url zdjęcia', value: ''}
+    ]
   }
   componentDidMount(){
     this.speciesListHandler();
