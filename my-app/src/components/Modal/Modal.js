@@ -22,7 +22,7 @@ const modal = (props) => {
             <div className={classes.modal}>
             <form>
                 {inputList} 
-                <input type="button" value="Dodaj"/>
+                <input type="button" onClick={props.addPet} value="Dodaj"/>
 
             </form>
 
