@@ -88,6 +88,13 @@ class App extends Component {
     newPetList[inputIndex] = input;
     this.setState({newPet : newPetList});
   }
+  addPetHandler = () =>{
+    const petArr = JSON.parse(JSON.stringify(this.state.pets));
+    petArr.push({name: this.state.newPet[0].value, species: this.state.newPet[2].value, birthYear:this.state.newPet[1].value, photo:this.state.newPet[3].value, key:this.state.newPet[0].value + Math.floor((Math.random() * 500) + 1) + 'kdsfvsd'});
+    this.setState({pets: petArr});
+  }
+
+  
 
   render(){
 
@@ -106,7 +113,8 @@ class App extends Component {
 
       <Modal
       inputs={this.state.newPet}
-      inputHandler={this.inputChangeHandler}/>
+      inputHandler={this.inputChangeHandler}
+      addPet={this.addPetHandler}/>
 
     </div>
   );
