@@ -20,9 +20,9 @@ const modal = (props) => {
         closeOnDocumentClick
         >
             <div className={classes.modal}>
-            <form>
+            <form onSubmit={props.addPet}>
                 {inputList} 
-                <input type="button" onClick={props.addPet} value="Dodaj"/>
+                <input type="submit" value="Dodaj"/>
 
             </form>
 
