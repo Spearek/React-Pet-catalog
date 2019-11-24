@@ -89,12 +89,17 @@ class App extends Component {
     this.setState({newPet : newPetList});
   }
   addPetHandler = (event) =>{
-    const petArr = JSON.parse(JSON.stringify(this.state.pets));
-    petArr.push({name: this.state.newPet[0].value, species: this.state.newPet[2].value, birthYear:this.state.newPet[1].value, photo:this.state.newPet[3].value, key:this.state.newPet[0].value + Math.floor((Math.random() * 500) + 1) + 'kdsfvsd'});
-    this.setState({pets: petArr});
-    
+    const adopted = {
+      name: this.state.newPet[0].value,
+      species: this.state.newPet[2].value,
+      birthYear: this.state.newPet[1].value,
+      photo: this.state.newPet[3].value,
+      key:this.state.newPet[0].value + Math.floor((Math.random() * 500) + 1) + 'kdsfvsd'
+    }
+    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
+    newPetArr.push(adopted);
+    this.setState({pets: newPetArr});
     event.preventDefault();
-
   }
 
   
