@@ -17,6 +17,31 @@ class App extends Component {
       key: 'dsklfjaad'
     },
     {
+      name: "Goodboy",
+      species: "Dog",
+      favFoods: ["bacon", "chicken", "bbq"],
+      birthYear: 2009,
+      photo: "https://images.pexels.com/photos/1629781/pexels-photo-1629781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=470",
+      key: 'ibgjlnr453'
+    },
+    {
+      name: "Quika",
+      species: "Rodent",
+      favFoods: ["grass", "hay"],
+      birthYear: 2018,
+      photo: "https://images.pexels.com/photos/60693/guinea-pig-cavy-pet-guinea-60693.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300&w=500",
+      key: 'vckxlqwkoe23'
+
+    },
+    {
+      name: "Amber",
+      species: "Rodent",
+      favFoods: ["cheese", "corn","flakes"],
+      birthYear: 2015,
+      photo: "https://images.pexels.com/photos/51340/rat-pets-eat-51340.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=400&w=800",
+      key: 'qweofdsif3534'
+    },
+    {
       name: "Barksalot",
       species: "Dog",
       birthYear: 2008,
