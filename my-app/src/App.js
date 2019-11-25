@@ -31,7 +31,7 @@ class App extends Component {
       photo: "https://learnwebcode.github.io/json-example/images/cat-1.jpg",
       key: 'fskadjv'
     }],
-    speciesList: [],
+    speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
     sortedBy: {
       birthYear: false,
@@ -44,9 +44,6 @@ class App extends Component {
       {type: 'Url zdjęcia', value: ''}
     ]
   }
-  componentDidMount(){
-    this.speciesListHandler();
-  }
 
   removePetHandler = (petKey) =>{
     const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
@@ -57,15 +54,6 @@ class App extends Component {
     this.setState({pets: newPetArr }); // dodać komunikat gdy nie ma żadnych zwierzaków do wyświetlenia
   }
   
-  speciesListHandler = ()=>{
-    const list = this.state.pets.map(el =>{
-      return el.species;
-    }).reduce((acc,val)=>{
-      if(acc.indexOf(val)< 0) acc.push(val);
-      return acc;
-    },[]);
-    this.setState({speciesList:list});
-  }
   speciesFilterHandler = (event)=>{
     this.setState({speciesSelectVal: event.target.value});
   }
@@ -101,8 +89,6 @@ class App extends Component {
     this.setState({pets: newPetArr});
     event.preventDefault();
   }
-
-  
 
   render(){
 
