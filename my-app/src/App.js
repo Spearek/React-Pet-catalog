@@ -58,10 +58,6 @@ class App extends Component {
     }],
     speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
-    sortedBy: {
-      birthYear: false,
-      name: false
-    },
     newPet:[
       {type: 'Imię', value: ''},
       {type: 'Rok urodzenia', value: ''},
