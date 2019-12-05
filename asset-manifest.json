@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Spearek/React-Pet-catalog/static/css/main.17920ff3.chunk.css",
+    "main.js": "/Spearek/React-Pet-catalog/static/js/main.752a5418.chunk.js",
+    "main.js.map": "/Spearek/React-Pet-catalog/static/js/main.752a5418.chunk.js.map",
+    "runtime-main.js": "/Spearek/React-Pet-catalog/static/js/runtime-main.92ecfb9d.js",
+    "runtime-main.js.map": "/Spearek/React-Pet-catalog/static/js/runtime-main.92ecfb9d.js.map",
+    "static/js/2.caa901fb.chunk.js": "/Spearek/React-Pet-catalog/static/js/2.caa901fb.chunk.js",
+    "static/js/2.caa901fb.chunk.js.map": "/Spearek/React-Pet-catalog/static/js/2.caa901fb.chunk.js.map",
+    "index.html": "/Spearek/React-Pet-catalog/index.html",
+    "precache-manifest.066a1403ec58eee25a70358abbe8c22a.js": "/Spearek/React-Pet-catalog/precache-manifest.066a1403ec58eee25a70358abbe8c22a.js",
+    "service-worker.js": "/Spearek/React-Pet-catalog/service-worker.js",
+    "static/css/main.17920ff3.chunk.css.map": "/Spearek/React-Pet-catalog/static/css/main.17920ff3.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.92ecfb9d.js",
+    "static/js/2.caa901fb.chunk.js",
+    "static/css/main.17920ff3.chunk.css",
+    "static/js/main.752a5418.chunk.js"
+  ]
+}
