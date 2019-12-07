@@ -13,6 +13,12 @@ const modal = (props) => {
              changed={(event)=>props.inputHandler(event,el.type)} />
       )
     })
+    const tagList = props.tags.map(el=>{
+        return(
+            <Tag
+            foodName={el}/>
+        )
+    })
 
     return(
         <Popup
@@ -25,8 +31,7 @@ const modal = (props) => {
                 {inputList} 
                 <div className={classes.tagsContainer}>
                     <input type="text" placeholder="ulubione jedzenie"/>
-                    <Tag/>
-                    <Tag/>
+                    {tagList}
                 </div>
                 <input type="submit" value="Dodaj"/>
             </form>
