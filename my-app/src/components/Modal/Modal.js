@@ -2,6 +2,7 @@ import React from 'react';
 import Popup from "reactjs-popup";
 import Input from "./Input/Input";
 import classes from "./Modal.module.css";
+import Tag from "./Tag/Tag";
 
 const modal = (props) => {   
 
@@ -22,8 +23,12 @@ const modal = (props) => {
             <div className={classes.modal}>
             <form onSubmit={props.addPet}>
                 {inputList} 
+                <div className={classes.tagsContainer}>
+                    <input type="text" placeholder="ulubione jedzenie"/>
+                    <Tag/>
+                    <Tag/>
+                </div>
                 <input type="submit" value="Dodaj"/>
-
             </form>
 
             </div>
