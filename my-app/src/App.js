@@ -63,7 +63,9 @@ class App extends Component {
       {type: 'Rok urodzenia', value: ''},
       {type: 'Gatunek', value: ''},
       {type: 'Url zdjęcia', value: ''}
-    ]
+    ],
+    currentFood:'',
+    favFoodList:['meat','cheese']
   }
 
   removePetHandler = (petKey) =>{
@@ -129,7 +131,8 @@ class App extends Component {
       <Modal
       inputs={this.state.newPet}
       inputHandler={this.inputChangeHandler}
-      addPet={this.addPetHandler}/>
+      addPet={this.addPetHandler}
+      tags={this.state.favFoodList}/>
 
     </div>
   );
