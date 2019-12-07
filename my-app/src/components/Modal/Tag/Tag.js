@@ -13,7 +13,7 @@ const tag = props => {
     }
 
     return(
-        <p style={tagStyle}>example</p>
+    <p style={tagStyle}>{props.foodName}</p>
     )
 }
 
