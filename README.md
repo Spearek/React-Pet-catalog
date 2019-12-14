@@ -1,2 +1,4 @@
 # React-Pet-catalog
-Tet Catalog App
+Pet Catalog App
+
+live: https://spearek.github.io/React-Pet-catalog/
