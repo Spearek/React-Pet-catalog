@@ -112,6 +112,14 @@ class App extends Component {
     this.setState({pets: newPetArr});
     event.preventDefault();
   }
+  favFoodChangeHandler = (event) =>{
+    this.setState({currentFood: event.target.value})
+  }
+  addFoodHandler = () =>{
+    const foodList = [...this.state.favFoodList];
+    foodList.push(this.state.currentFood);
+    this.setState({favFoodList:foodList,currentFood:''})
+  }
 
   render(){
 
@@ -132,7 +140,11 @@ class App extends Component {
       inputs={this.state.newPet}
       inputHandler={this.inputChangeHandler}
       addPet={this.addPetHandler}
-      tags={this.state.favFoodList}/>
+      tags={this.state.favFoodList}
+      currentFood={this.state.currentFood}
+      foodHandler={this.favFoodChangeHandler}
+      confirmFoodHandler={this.addFoodHandler}
+      />
 
     </div>
   );
