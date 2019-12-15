@@ -30,7 +30,8 @@ const modal = (props) => {
             <form onSubmit={props.addPet}>
                 {inputList} 
                 <div className={classes.tagsContainer}>
-                    <input type="text" placeholder="ulubione jedzenie"/>
+                    <input type="text" placeholder="ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
+                    <span onClick={props.confirmFoodHandler}><img src={require("../../assets/photoshop slices/plus.png")} alt="plus sign"/></span>
                     {tagList}
                 </div>
                 <input type="submit" value="Dodaj"/>
