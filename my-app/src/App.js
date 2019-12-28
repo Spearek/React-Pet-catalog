@@ -121,6 +121,10 @@ class App extends Component {
     foodList.push(this.state.currentFood);
     this.setState({favFoodList:foodList,currentFood:''})
   }
+  removeFoodHandler = (el) =>{
+    //newFoodArr = [...favFoodList];
+    console.log(`${el} was clicked`);
+  }
 
   render(){
 
@@ -145,6 +149,7 @@ class App extends Component {
       currentFood={this.state.currentFood}
       foodHandler={this.favFoodChangeHandler}
       confirmFoodHandler={this.addFoodHandler}
+      removeFood={this.removeFoodHandler}
       />
 
     </div>
