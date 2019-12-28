@@ -34,7 +34,7 @@ const tag = props => {
     return(
         <div style={containerStyles}>
             <p style={tagStyle}>{props.foodName}</p>
-            <span style={spanStyle}>x</span>
+            <span style={spanStyle} onClick={props.remove}>x</span>
         </div>
     
     )

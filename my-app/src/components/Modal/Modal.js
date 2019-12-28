@@ -16,9 +16,10 @@ const modal = (props) => {
     const tagList = props.tags.map(el=>{
         return(
             <Tag
-            foodName={el}/>
+            foodName={el}
+            remove={props.removeFood.bind(this,el)}/>
         )
-    })
+    }) 
 
     return(
         <Popup
