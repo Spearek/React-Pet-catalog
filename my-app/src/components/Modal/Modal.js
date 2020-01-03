@@ -3,8 +3,17 @@ import Popup from "reactjs-popup";
 import Input from "./Input/Input";
 import classes from "./Modal.module.css";
 import Tag from "./Tag/Tag";
+import Radio from "./Radio/Radio"
 
 const modal = (props) => {   
+
+    const radioList = props.species.map(el=>{
+
+        return(
+            <Radio
+            speciesName={el}/>
+        )
+    })
 
     const inputList = props.inputs.map((el,pos)=>{
         if(el.prop!=='other'){
@@ -34,6 +43,10 @@ const modal = (props) => {
             <div className={classes.modal}>
             <form onSubmit={props.addPet}>
                 {inputList} 
+                <div>
+                    {radioList}
+                </div>
+                
                 <div className={classes.tagsContainer}>
                     <input type="text" placeholder="ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
                     <span onClick={props.confirmFoodHandler}><img src={require("../../assets/photoshop slices/plus.png")} alt="plus sign"/></span>
