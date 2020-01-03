@@ -7,8 +7,12 @@ const pet = props =>{
 
     let favFood = null;
    if (props.food !== undefined ){
-    favFood = props.food.map(el => {
-        return <FavFood favorite = {el}/>
+    favFood = props.food.map((el,pos) => {
+        return( 
+            <FavFood 
+            favorite = {el}
+            key={el + pos}/>
+            )
     });
    }
   

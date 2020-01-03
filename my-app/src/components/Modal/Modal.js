@@ -6,10 +6,11 @@ import Tag from "./Tag/Tag";
 
 const modal = (props) => {   
 
-    const inputList = props.inputs.map(el=>{
+    const inputList = props.inputs.map((el,pos)=>{
         return(
             <Input
              newPetData={el}
+             key={pos}
              changed={(event)=>props.inputHandler(event,el.type)} />
       )
     })
@@ -17,7 +18,8 @@ const modal = (props) => {
         return(
             <Tag
             foodName={el}
-            remove={props.removeFood.bind(this,pos)}/>
+            remove={props.removeFood.bind(this,pos)}
+            key={el + pos}/>
         )
     }) 
 
