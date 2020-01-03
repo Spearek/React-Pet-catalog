@@ -59,10 +59,10 @@ class App extends Component {
     speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
     newPet:[
-      {type: 'Imię', value: ''},
-      {type: 'Rok urodzenia', value: ''},
-      {type: 'Gatunek', value: ''},
-      {type: 'Url zdjęcia', value: ''}
+      {type: 'Imię', value: '',prop:'text'},
+      {type: 'Rok urodzenia', value: '',prop:'number'},
+      {type: 'Gatunek', value: '', prop:'other'},
+      {type: 'Url zdjęcia', value: '', prop:'text'}
     ],
     currentFood:'',
     favFoodList:[]
