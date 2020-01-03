@@ -6,7 +6,8 @@ const input= props =>(
     type="text" 
     value={props.newPetData.value} 
     placeholder={props.newPetData.type} 
-    onChange={props.changed}></input>
+    onChange={props.changed}
+    required/>
 )
 
 
