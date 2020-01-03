@@ -7,12 +7,14 @@ import Tag from "./Tag/Tag";
 const modal = (props) => {   
 
     const inputList = props.inputs.map((el,pos)=>{
+        if(el.prop!=='other'){
         return(
             <Input
              newPetData={el}
              key={pos}
              changed={(event)=>props.inputHandler(event,el.type)} />
-      )
+      )}
+      return null;
     })
     const tagList = props.tags.map((el,pos)=>{
         return(
