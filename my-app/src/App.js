@@ -151,6 +151,7 @@ class App extends Component {
       foodHandler={this.favFoodChangeHandler}
       confirmFoodHandler={this.addFoodHandler}
       removeFood={this.removeFoodHandler}
+      species={this.state.speciesList}
       />
 
     </div>
