@@ -13,11 +13,11 @@ const modal = (props) => {
              changed={(event)=>props.inputHandler(event,el.type)} />
       )
     })
-    const tagList = props.tags.map(el=>{
+    const tagList = props.tags.map((el,pos)=>{
         return(
             <Tag
             foodName={el}
-            remove={props.removeFood.bind(this,el)}/>
+            remove={props.removeFood.bind(this,pos)}/>
         )
     }) 
 
