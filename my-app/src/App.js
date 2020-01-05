@@ -58,6 +58,7 @@ class App extends Component {
     }],
     speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
+    radioChecked:'',
     newPet:[
       {type: 'Imię', value: '',prop:'text'},
       {type: 'Rok urodzenia', value: '',prop:'number'},
@@ -98,6 +99,11 @@ class App extends Component {
     const newPetList= JSON.parse(JSON.stringify(this.state.newPet));
     newPetList[inputIndex] = input;
     this.setState({newPet : newPetList});
+  }
+  radioChangeHandler = (event) =>{
+    let selectedSpecies = event.target.value;
+    this.setState({radioChecked: selectedSpecies});
+    
   }
   addPetHandler = (event) =>{
     const adopted = {
@@ -152,6 +158,8 @@ class App extends Component {
       confirmFoodHandler={this.addFoodHandler}
       removeFood={this.removeFoodHandler}
       species={this.state.speciesList}
+      radioChecked={this.state.radioChecked}
+      radioHandler={this.radioChangeHandler}
       />
 
     </div>
