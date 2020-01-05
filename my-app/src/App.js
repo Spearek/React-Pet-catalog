@@ -108,7 +108,7 @@ class App extends Component {
   addPetHandler = (event) =>{
     const adopted = {
       name: this.state.newPet[0].value,
-      species: this.state.newPet[2].value,
+      species: this.state.radioChecked,
       favFoods:[...this.state.favFoodList], 
       birthYear: this.state.newPet[1].value,
       photo: this.state.newPet[3].value,
