@@ -8,10 +8,12 @@ import Radio from "./Radio/Radio"
 const modal = (props) => {   
 
     const radioList = props.species.map(el=>{
-
         return(
             <Radio
-            speciesName={el}/>
+            speciesName={el}
+            changed={props.radioHandler}
+            radioChecked={props.radioChecked}
+            key={el}/>
         )
     })
 
