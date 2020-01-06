@@ -4,7 +4,7 @@ const radio = props =>{
 
     return(
         <label>
-            <input type="radio" value={props.speciesName} onChange={props.changed} checked={props.speciesName === props.radioChecked}/>
+            <input type="radio" value={props.speciesName} name="species" onChange={props.changed} checked={props.speciesName === props.radioChecked} required/>
             {props.speciesName}
         </label>
 
