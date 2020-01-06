@@ -43,19 +43,21 @@ const modal = (props) => {
         closeOnDocumentClick
         >
             <div className={classes.modal}>
-            <form onSubmit={props.addPet}>
-                {inputList} 
-                <div>
-                    {radioList}
-                </div>
-                
-                <div className={classes.tagsContainer}>
-                    <input type="text" placeholder="ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
-                    <span onClick={props.confirmFoodHandler}><img src={require("../../assets/photoshop slices/plus.png")} alt="plus sign"/></span>
-                    {tagList}
-                </div>
-                <input type="submit" value="Dodaj"/>
-            </form>
+                <h1>Dodaj nowego zwierzaka</h1>
+                <span className={classes.modalClose}>x</span>
+                <form onSubmit={props.addPet}>
+                    {inputList} 
+                    <div>
+                        {radioList}
+                    </div>
+                    
+                    <div className={classes.tagsContainer}>
+                        <input type="text" placeholder="ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
+                        <span onClick={props.confirmFoodHandler}><img src={require("../../assets/photoshop slices/plus.png")} alt="plus sign"/></span>
+                        {tagList}
+                    </div>
+                    <input type="submit" value="Dodaj"/>
+                </form>
 
             </div>
         
