@@ -114,9 +114,15 @@ class App extends Component {
       photo: this.state.newPet[3].value,
       key:this.state.newPet[0].value + Math.floor((Math.random() * 500) + 1) + 'kdsfvsd'
     }
+    const cleared = [
+      {type: 'Imię', value: '',prop:'text'},
+      {type: 'Rok urodzenia', value: '',prop:'number'},
+      {type: 'Gatunek', value: '', prop:'other'},
+      {type: 'Url zdjęcia', value: '', prop:'text'}
+    ]
     const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
     newPetArr.push(adopted);
-    this.setState({pets: newPetArr, favFoodList:[]});
+    this.setState({pets: newPetArr, favFoodList:[], newPet:cleared,radioChecked:'' });
     event.preventDefault();
   }
   favFoodChangeHandler = (event) =>{
