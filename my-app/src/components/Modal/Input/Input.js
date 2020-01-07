@@ -8,7 +8,8 @@ const input= props =>{
     let inputStyle={
         backgroundImage:`url(${pawIcon})`,
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "left"
+        backgroundPosition: "left",
+        backgroundSize:"contain"
 
     }
 
