@@ -5,6 +5,15 @@ import classes from "./Modal.module.css";
 import Tag from "./Tag/Tag";
 import Radio from "./Radio/Radio";
 
+import bowlIcon from "../../assets/modal_icons/bowl.svg";
+
+const favFoodBcg={
+    backgroundImage:`url(${bowlIcon})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left",
+    backgroundSize:"contain"
+}
+
 const modal = (props) => {   
 
     const radioList = props.species.map(el=>{
@@ -65,7 +74,7 @@ const modal = (props) => {
                     </div> 
 
                     <div className={classes.tagsContainer}>
-                        <input type="text" placeholder="Ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
+                        <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
                         <span onClick={props.confirmFoodHandler}><img src={require("../../assets/photoshop slices/plus.png")} alt="plus sign"/></span>
                         {tagList}
                     </div>
