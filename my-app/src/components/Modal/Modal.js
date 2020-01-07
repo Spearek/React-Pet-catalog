@@ -52,15 +52,15 @@ const modal = (props) => {
                         {inputList} 
                         <div className={classes.radioContainer}>
                             <p>Wybierz typ zwierzaka: </p>
-                            <span className={classes.speciesPaws}><img src={require("../../assets/modal_icons/paws.svg")}/></span>
+                            <span className={classes.speciesPaws}><img src={require("../../assets/modal_icons/paws.svg")} alt="paws icon"/></span>
                             {radioList}
                         </div>
                     </div>   
 
                     <div className={classes.rightElements}>
-                        <span><img src={require("../../assets/modal_icons/cat.svg")}/></span>
-                        <span><img src={require("../../assets/modal_icons/dog.svg")}/></span>
-                        <span><img src={require("../../assets/modal_icons/hamster.svg")}/></span>
+                        <span><img src={require("../../assets/modal_icons/cat.svg")} alt="cat icon"/></span>
+                        <span><img src={require("../../assets/modal_icons/dog.svg")} alt="dog icon"/></span>
+                        <span><img src={require("../../assets/modal_icons/hamster.svg")} alt="hamster icon"/></span>
 
                     </div> 
 
