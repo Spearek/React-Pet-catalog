@@ -47,9 +47,10 @@ const modal = (props) => {
 
     return(
         <Popup
-        trigger={<img src={require("../../assets/photoshop slices/plus.png")} alt="plus sign"/>}
-        modal
+        open={props.modalStatus}
         closeOnDocumentClick
+        onClose={props.modalHandler.bind(this,false)}
+        modal
         >
             <div className={classes.modal}>
                 <h1>Dodaj nowego zwierzaka</h1>

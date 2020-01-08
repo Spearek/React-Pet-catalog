@@ -66,7 +66,8 @@ class App extends Component {
       {type: 'Url zdjęcia', value: '', prop:'text'}
     ],
     currentFood:'',
-    favFoodList:[]
+    favFoodList:[],
+    modalStatus:false
   }
 
   removePetHandler = (petKey) =>{
@@ -139,6 +140,10 @@ class App extends Component {
     this.setState({favFoodList: newFoodArr})
   }
 
+  modalStatusHandler = (status) =>{
+    this.setState({modalStatus:status})
+  }
+
   render(){
 
   return (
@@ -166,7 +171,10 @@ class App extends Component {
       species={this.state.speciesList}
       radioChecked={this.state.radioChecked}
       radioHandler={this.radioChangeHandler}
+      modalStatus={this.state.modalStatus}
+      modalHandler={this.modalStatusHandler}
       />
+      <button onClick={this.modalStatusHandler.bind(this,true)}>Dodaj nowego Zwierzaka</button>
 
     </div>
   );
