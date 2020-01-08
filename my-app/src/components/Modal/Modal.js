@@ -54,7 +54,7 @@ const modal = (props) => {
         >
             <div className={classes.modal}>
                 <h1>Dodaj nowego zwierzaka</h1>
-                <span className={classes.modalClose}>x</span>
+                <span className={classes.modalClose} onClick={props.modalHandler.bind(this,false)}>x</span>
 
                 <form onSubmit={props.addPet}>
 
