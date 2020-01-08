@@ -16,13 +16,15 @@ const favFoodBcg={
 
 const modal = (props) => {   
 
-    const radioList = props.species.map(el=>{
+    const radioList = props.species.map((el,pos)=>{
         return(
             <Radio
+            position={pos}
             speciesName={el}
             changed={props.radioHandler}
             radioChecked={props.radioChecked}
-            key={el}/>
+            key={el}
+            />
         )
     })
 
