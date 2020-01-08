@@ -1,21 +1,28 @@
 {
   "files": {
-    "main.css": "/React-Pet-catalog/static/css/main.17920ff3.chunk.css",
-    "main.js": "/React-Pet-catalog/static/js/main.f5380c74.chunk.js",
-    "main.js.map": "/React-Pet-catalog/static/js/main.f5380c74.chunk.js.map",
-    "runtime-main.js": "/React-Pet-catalog/static/js/runtime-main.154bfe4c.js",
-    "runtime-main.js.map": "/React-Pet-catalog/static/js/runtime-main.154bfe4c.js.map",
-    "static/js/2.caa901fb.chunk.js": "/React-Pet-catalog/static/js/2.caa901fb.chunk.js",
-    "static/js/2.caa901fb.chunk.js.map": "/React-Pet-catalog/static/js/2.caa901fb.chunk.js.map",
+    "main.css": "/React-Pet-catalog/static/css/main.41ad98a6.chunk.css",
+    "main.js": "/React-Pet-catalog/static/js/main.e48d4a38.chunk.js",
+    "main.js.map": "/React-Pet-catalog/static/js/main.e48d4a38.chunk.js.map",
+    "runtime-main.js": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js",
+    "runtime-main.js.map": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js.map",
+    "static/js/2.17846857.chunk.js": "/React-Pet-catalog/static/js/2.17846857.chunk.js",
+    "static/js/2.17846857.chunk.js.map": "/React-Pet-catalog/static/js/2.17846857.chunk.js.map",
     "index.html": "/React-Pet-catalog/index.html",
-    "precache-manifest.c113b9705c6ab38cc16d92f4c11acdfc.js": "/React-Pet-catalog/precache-manifest.c113b9705c6ab38cc16d92f4c11acdfc.js",
+    "precache-manifest.61a6060e6cc9ab025d3faee2235a7a34.js": "/React-Pet-catalog/precache-manifest.61a6060e6cc9ab025d3faee2235a7a34.js",
     "service-worker.js": "/React-Pet-catalog/service-worker.js",
-    "static/css/main.17920ff3.chunk.css.map": "/React-Pet-catalog/static/css/main.17920ff3.chunk.css.map"
+    "static/css/main.41ad98a6.chunk.css.map": "/React-Pet-catalog/static/css/main.41ad98a6.chunk.css.map",
+    "static/js/2.17846857.chunk.js.LICENSE": "/React-Pet-catalog/static/js/2.17846857.chunk.js.LICENSE",
+    "static/media/bowl.svg": "/React-Pet-catalog/static/media/bowl.56edf2b2.svg",
+    "static/media/cat.svg": "/React-Pet-catalog/static/media/cat.872640e1.svg",
+    "static/media/dog.svg": "/React-Pet-catalog/static/media/dog.9694d09e.svg",
+    "static/media/hamster.svg": "/React-Pet-catalog/static/media/hamster.70dc839e.svg",
+    "static/media/paws.svg": "/React-Pet-catalog/static/media/paws.fedff2d4.svg",
+    "static/media/singlePaw.svg": "/React-Pet-catalog/static/media/singlePaw.dce15f4f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.154bfe4c.js",
-    "static/js/2.caa901fb.chunk.js",
-    "static/css/main.17920ff3.chunk.css",
-    "static/js/main.f5380c74.chunk.js"
+    "static/js/runtime-main.cb7f9932.js",
+    "static/js/2.17846857.chunk.js",
+    "static/css/main.41ad98a6.chunk.css",
+    "static/js/main.e48d4a38.chunk.js"
   ]
 }
