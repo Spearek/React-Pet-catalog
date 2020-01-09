@@ -2,6 +2,8 @@ import React from 'react';
 import FavFood from './FavFood/FavFood';
 import classes from './Pet.module.css';
 
+import deleteBtn from '../../../assets/photoshop slices/delete.png'
+
 
 const pet = props =>{
 
@@ -26,7 +28,7 @@ const pet = props =>{
                 <p>Imię: {props.petName}</p>
                 <p>Wiek: {props.petAge}</p>
                 <p>Gatunek: {props.petSpecies}</p>
-                <img className={classes.remove} onClick={props.click} src={require('../../../assets/photoshop slices/delete.png')} alt='delete button' />        
+                <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />        
                 {favFood}   
             </div>
         </div>

@@ -6,6 +6,11 @@ import Tag from "./Tag/Tag";
 import Radio from "./Radio/Radio";
 
 import bowlIcon from "../../assets/modal_icons/bowl.svg";
+import catIcon from "../../assets/modal_icons/cat.svg";
+import dogIcon from "../../assets/modal_icons/dog.svg";
+import hamsterIcon from "../../assets/modal_icons/hamster.svg";
+import pawsIcon from "../../assets/modal_icons/paws.svg";
+import plusIcon from "../../assets/photoshop slices/plus.png";
 
 const favFoodBcg={
     backgroundImage:`url(${bowlIcon})`,
@@ -64,21 +69,21 @@ const modal = (props) => {
                         {inputList} 
                         <div className={classes.radioContainer}>
                             <p>Wybierz typ zwierzaka: </p>
-                            <span className={classes.speciesPaws}><img src={require("../../assets/modal_icons/paws.svg")} alt="paws icon"/></span>
+                            <span className={classes.speciesPaws}><img src={pawsIcon} alt="paws icon"/></span>
                             {radioList}
                         </div>
                     </div>   
 
                     <div className={classes.rightElements}>
-                        <span><img src={require("../../assets/modal_icons/cat.svg")} alt="cat icon"/></span>
-                        <span><img src={require("../../assets/modal_icons/dog.svg")} alt="dog icon"/></span>
-                        <span><img src={require("../../assets/modal_icons/hamster.svg")} alt="hamster icon"/></span>
+                        <span><img src={catIcon} alt="cat icon"/></span>
+                        <span><img src={dogIcon} alt="dog icon"/></span>
+                        <span><img src={hamsterIcon} alt="hamster icon"/></span>
 
                     </div> 
 
                     <div className={classes.tagsContainer}>
                         <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
-                        <span onClick={props.confirmFoodHandler}><img src={require("../../assets/photoshop slices/plus.png")} alt="plus sign"/></span>
+                        <span onClick={props.confirmFoodHandler}><img src={plusIcon} alt="plus sign"/></span>
                         {tagList}
                     </div>
 
