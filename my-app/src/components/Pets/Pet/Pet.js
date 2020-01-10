@@ -21,16 +21,26 @@ const pet = props =>{
     return(
 
         <div className={classes.petContainer}>
-            <div className={classes.petAvatar}>
-                <img src={props.petPhoto} alt={props.petSpecies + ' photography'}/>
+
+            <div className={classes.leftElements}>
+                <p>Wiek: {props.petAge} lat</p>
+                <div className={classes.petAvatar}>
+                    <img src={props.petPhoto} alt={props.petSpecies + ' photography'}/>
+                </div>
+                <p>XX obserwujących</p>
             </div>
-            <div className={classes.petInfo}>
-                <p>Imię: {props.petName}</p>
-                <p>Wiek: {props.petAge}</p>
+            
+            <div className={classes.rightElements}>
+                <h3>{props.petName}</h3>
+                <p className={classes.description}>Kilka przykładowych zdań o zwierzaku. Domyślnie będą one zaciągane z serwera. Na tą chwilę jest to placeholder. Jeśli sprawdzasz ten projekt - zerknij za jakiś czas :)</p>
+                <p>Wiek: {props.petAge} lat</p>
                 <p>Gatunek: {props.petSpecies}</p>
-                <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />        
-                {favFood}   
+                <div className={classes.foodContainer}>
+                    {favFood}
+                </div>
+                
             </div>
+            <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />
         </div>
     )
 }
