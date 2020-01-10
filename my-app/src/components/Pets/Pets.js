@@ -1,6 +1,8 @@
 import React from 'react';
 import Pet from './Pet/Pet';
 
+import classes from './Pets.module.css';
+
 const pets = props =>{
 
     const currentYear = new Date().getFullYear();
@@ -21,10 +23,9 @@ const pets = props =>{
     });
 
     return(
-
-        <React.Fragment>
-          {petListManager}
-        </React.Fragment>
+        <div className={classes.pets}>
+            {petListManager}
+        </div>           
     )};
 
 export default pets;
