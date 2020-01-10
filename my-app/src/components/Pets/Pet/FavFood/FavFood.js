@@ -7,7 +7,7 @@ const styles = {
     border: '1px solid black',
     padding: '2px',
     fontSize: '14px',
-    margin: '0 10px'
+    margin: '5px 10px'
 }
 
     return <p style={styles}>{props.favorite}</p>
