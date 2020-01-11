@@ -4,6 +4,8 @@ import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 import Modal from './components/Modal/Modal'
 
+import axios from './axios-pets';
+
 
 class App extends Component {
   state={
@@ -123,6 +125,9 @@ class App extends Component {
     ]
     const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
     newPetArr.push(adopted);
+    axios.post('/pets.json',adopted)
+      .then(response=>console.log(response))
+      .catch(error =>console.log(error)); 
     this.setState({pets: newPetArr, favFoodList:[], newPet:cleared,radioChecked:'' });
     event.preventDefault();
   }
