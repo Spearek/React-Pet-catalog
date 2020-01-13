@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './App.css';
 import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
-import Modal from './components/Modal/Modal'
+import NewPet from './components/NewPet/NewPet';
 
 
 
@@ -102,7 +102,7 @@ class App extends Component {
       click={this.removePetHandler}
       visiblity={this.state.speciesSelectVal}/>
 
-      <Modal
+      <NewPet
       species={this.state.speciesList}
       modalStatus={this.state.modalStatus}
       modalHandler={this.modalStatusHandler}
