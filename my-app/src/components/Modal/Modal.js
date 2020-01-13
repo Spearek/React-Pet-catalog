@@ -4,6 +4,7 @@ import Input from "./Input/Input";
 import classes from "./Modal.module.css";
 import Tag from "./Tag/Tag";
 import Radio from "./Radio/Radio";
+import axios from "../../axios-pets";
 
 import bowlIcon from "../../assets/modal_icons/bowl.svg";
 import catIcon from "../../assets/modal_icons/cat.svg";
@@ -12,43 +13,111 @@ import hamsterIcon from "../../assets/modal_icons/hamster.svg";
 import pawsIcon from "../../assets/modal_icons/paws.svg";
 import plusIcon from "../../assets/photoshop slices/plus.png";
 
-const favFoodBcg={
-    backgroundImage:`url(${bowlIcon})`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "left",
-    backgroundSize:"contain"
-}
 
 class Modal extends Component {   
 
+    state = {
+        newPet:[
+            {type: 'Imię', value: '',prop:'text'},
+            {type: 'Rok urodzenia', value: '',prop:'number'},
+            {type: 'Gatunek', value: '', prop:'other'},
+            {type: 'Url zdjęcia', value: '', prop:'text'}
+          ],
+        radioChecked:'',
+        favFoodList:[],
+        currentFood:'',
+
+    }
+    inputChangeHandler = (event,type) =>{
+        const inputIndex = this.state.newPet.findIndex(el =>{
+          return el.type === type;
+        });
+        const input = {
+          ...this.state.newPet[inputIndex]
+        }
+        input.value = event.target.value;
+        const newPetList= JSON.parse(JSON.stringify(this.state.newPet));
+        newPetList[inputIndex] = input;
+        this.setState({newPet : newPetList});
+      }
+      
+    radioChangeHandler = (event) =>{
+        let selectedSpecies = event.target.value;
+        this.setState({radioChecked: selectedSpecies});
+        }
+
+    favFoodChangeHandler = (event) =>{
+        this.setState({currentFood: event.target.value})
+        }
+
+    addFoodHandler = () =>{
+        const foodList = [...this.state.favFoodList];
+        foodList.push(this.state.currentFood);
+        this.setState({favFoodList:foodList,currentFood:''})
+        }
+
+    removeFoodHandler = (pos) =>{
+        const newFoodArr = [...this.state.favFoodList];
+        newFoodArr.splice(pos,1);
+        this.setState({favFoodList: newFoodArr})
+        }
+    
+    addPetHandler = (event) =>{
+        const adopted = {
+            name: this.state.newPet[0].value,
+            species: this.state.radioChecked,
+            favFoods:[...this.state.favFoodList], 
+            birthYear: this.state.newPet[1].value,
+            photo: this.state.newPet[3].value,
+            key:this.state.newPet[0].value + Math.floor((Math.random() * 500) + 1) + 'kdsfvsd'
+            }
+        const cleared = [
+            {type: 'Imię', value: '',prop:'text'},
+            {type: 'Rok urodzenia', value: '',prop:'number'},
+            {type: 'Gatunek', value: '', prop:'other'},
+            {type: 'Url zdjęcia', value: '', prop:'text'}];
+            
+        axios.post('/pets.json',adopted)
+          .then(response=>console.log(response))
+          .catch(error =>console.log(error)); 
+        this.setState({favFoodList:[], newPet:cleared,radioChecked:'' });
+        event.preventDefault();
+          }
+
     render(){
+        const favFoodBcg={
+            backgroundImage:`url(${bowlIcon})`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "left",
+            backgroundSize:"contain"
+        }
+        
         const radioList = this.props.species.map((el,pos)=>{
             return(
                 <Radio
                 position={pos}
                 speciesName={el}
-                changed={this.props.radioHandler}
-                radioChecked={this.props.radioChecked}
+                changed={this.radioChangeHandler}
+                radioChecked={this.state.radioChecked}
                 key={el}
                 />
             )
         })
-    
-        const inputList = this.props.inputs.map((el,pos)=>{
+        const inputList = this.state.newPet.map((el,pos)=>{
             if(el.prop!=='other'){
             return(
                 <Input
                  newPetData={el}
                  key={pos}
-                 changed={(event)=>this.props.inputHandler(event,el.type)} />
+                 changed={(event)=>this.inputChangeHandler(event,el.type)} />
           )}
           return null;
         })
-        const tagList = this.props.tags.map((el,pos)=>{
+        const tagList = this.state.favFoodList.map((el,pos)=>{
             return(
                 <Tag
                 foodName={el}
-                remove={this.props.removeFood.bind(this,pos)}
+                remove={this.removeFoodHandler.bind(this,pos)}
                 key={el + pos}/>
             )
         }) 
@@ -64,7 +133,7 @@ class Modal extends Component {
                     <h1>Dodaj nowego zwierzaka</h1>
                     <span className={classes.modalClose} onClick={this.props.modalHandler.bind(this,false)}>x</span>
     
-                    <form onSubmit={this.props.addPet}>
+                    <form onSubmit={this.addPetHandler}>
     
                         <div className={classes.leftElements}>
                             {inputList} 
@@ -83,8 +152,8 @@ class Modal extends Component {
                         </div> 
     
                         <div className={classes.tagsContainer}>
-                            <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={this.props.currentFood} onChange={this.props.foodHandler}/>
-                            <span onClick={this.props.confirmFoodHandler}><img src={plusIcon} alt="plus sign"/></span>
+                            <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={this.state.currentFood} onChange={this.favFoodChangeHandler}/>
+                            <span onClick={this.addFoodHandler}><img src={plusIcon} alt="plus sign"/></span>
                             {tagList}
                         </div>
     
