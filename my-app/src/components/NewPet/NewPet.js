@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Popup from "reactjs-popup";
 import Input from "./Input/Input";
-import classes from "./Modal.module.css";
+import classes from "./NewPet.module.css";
 import Tag from "./Tag/Tag";
 import Radio from "./Radio/Radio";
 import axios from "../../axios-pets";
@@ -14,7 +14,7 @@ import pawsIcon from "../../assets/modal_icons/paws.svg";
 import plusIcon from "../../assets/photoshop slices/plus.png";
 
 
-class Modal extends Component {   
+class NewPet extends Component {   
 
     state = {
         newPet:[
@@ -168,4 +168,4 @@ class Modal extends Component {
     }
 };
 
-  export default Modal;
+  export default NewPet;
