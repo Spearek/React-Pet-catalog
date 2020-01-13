@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Popup from "reactjs-popup";
 import Input from "./Input/Input";
 import classes from "./Modal.module.css";
@@ -19,81 +19,84 @@ const favFoodBcg={
     backgroundSize:"contain"
 }
 
-const modal = (props) => {   
+class Modal extends Component {   
 
-    const radioList = props.species.map((el,pos)=>{
+    render(){
+        const radioList = this.props.species.map((el,pos)=>{
+            return(
+                <Radio
+                position={pos}
+                speciesName={el}
+                changed={this.props.radioHandler}
+                radioChecked={this.props.radioChecked}
+                key={el}
+                />
+            )
+        })
+    
+        const inputList = this.props.inputs.map((el,pos)=>{
+            if(el.prop!=='other'){
+            return(
+                <Input
+                 newPetData={el}
+                 key={pos}
+                 changed={(event)=>this.props.inputHandler(event,el.type)} />
+          )}
+          return null;
+        })
+        const tagList = this.props.tags.map((el,pos)=>{
+            return(
+                <Tag
+                foodName={el}
+                remove={this.props.removeFood.bind(this,pos)}
+                key={el + pos}/>
+            )
+        }) 
+    
         return(
-            <Radio
-            position={pos}
-            speciesName={el}
-            changed={props.radioHandler}
-            radioChecked={props.radioChecked}
-            key={el}
-            />
-        )
-    })
-
-    const inputList = props.inputs.map((el,pos)=>{
-        if(el.prop!=='other'){
-        return(
-            <Input
-             newPetData={el}
-             key={pos}
-             changed={(event)=>props.inputHandler(event,el.type)} />
-      )}
-      return null;
-    })
-    const tagList = props.tags.map((el,pos)=>{
-        return(
-            <Tag
-            foodName={el}
-            remove={props.removeFood.bind(this,pos)}
-            key={el + pos}/>
-        )
-    }) 
-
-    return(
-        <Popup
-        open={props.modalStatus}
-        closeOnDocumentClick
-        onClose={props.modalHandler.bind(this,false)}
-        modal
-        >
-            <div className={classes.modal}>
-                <h1>Dodaj nowego zwierzaka</h1>
-                <span className={classes.modalClose} onClick={props.modalHandler.bind(this,false)}>x</span>
-
-                <form onSubmit={props.addPet}>
-
-                    <div className={classes.leftElements}>
-                        {inputList} 
-                        <div className={classes.radioContainer}>
-                            <p>Wybierz typ zwierzaka: </p>
-                            <span className={classes.speciesPaws}><img src={pawsIcon} alt="paws icon"/></span>
-                            {radioList}
+            <Popup
+            open={this.props.modalStatus}
+            closeOnDocumentClick
+            onClose={this.props.modalHandler.bind(this,false)}
+            modal
+            >
+                <div className={classes.modal}>
+                    <h1>Dodaj nowego zwierzaka</h1>
+                    <span className={classes.modalClose} onClick={this.props.modalHandler.bind(this,false)}>x</span>
+    
+                    <form onSubmit={this.props.addPet}>
+    
+                        <div className={classes.leftElements}>
+                            {inputList} 
+                            <div className={classes.radioContainer}>
+                                <p>Wybierz typ zwierzaka: </p>
+                                <span className={classes.speciesPaws}><img src={pawsIcon} alt="paws icon"/></span>
+                                {radioList}
+                            </div>
+                        </div>   
+    
+                        <div className={classes.rightElements}>
+                            <span><img src={catIcon} alt="cat icon"/></span>
+                            <span><img src={dogIcon} alt="dog icon"/></span>
+                            <span><img src={hamsterIcon} alt="hamster icon"/></span>
+    
+                        </div> 
+    
+                        <div className={classes.tagsContainer}>
+                            <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={this.props.currentFood} onChange={this.props.foodHandler}/>
+                            <span onClick={this.props.confirmFoodHandler}><img src={plusIcon} alt="plus sign"/></span>
+                            {tagList}
                         </div>
-                    </div>   
+    
+                        <input type="submit" value="Dodaj"/>
+    
+                    </form>
+    
+                </div>
+            
+            </Popup>
+        )
+    }
+};
 
-                    <div className={classes.rightElements}>
-                        <span><img src={catIcon} alt="cat icon"/></span>
-                        <span><img src={dogIcon} alt="dog icon"/></span>
-                        <span><img src={hamsterIcon} alt="hamster icon"/></span>
-
-                    </div> 
-
-                    <div className={classes.tagsContainer}>
-                        <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={props.currentFood} onChange={props.foodHandler}/>
-                        <span onClick={props.confirmFoodHandler}><img src={plusIcon} alt="plus sign"/></span>
-                        {tagList}
-                    </div>
-
-                    <input type="submit" value="Dodaj"/>
-
-                </form>
-
-            </div>
-        
-        </Popup>
-    )};
-
-  export default modal;
+  export default Modal;
