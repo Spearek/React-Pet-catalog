@@ -4,7 +4,6 @@ import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 import Modal from './components/Modal/Modal'
 
-import axios from './axios-pets';
 
 
 class App extends Component {
@@ -60,16 +59,8 @@ class App extends Component {
     }],
     speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
-    radioChecked:'',
-    newPet:[
-      {type: 'Imię', value: '',prop:'text'},
-      {type: 'Rok urodzenia', value: '',prop:'number'},
-      {type: 'Gatunek', value: '', prop:'other'},
-      {type: 'Url zdjęcia', value: '', prop:'text'}
-    ],
-    currentFood:'',
-    favFoodList:[],
-    modalStatus:false
+    modalStatus:false,
+
   }
 
   removePetHandler = (petKey) =>{
@@ -91,63 +82,10 @@ class App extends Component {
     if (property === 'birthYear') newPetArr.reverse();
     this.setState({pets:newPetArr});
   }
-  inputChangeHandler = (event,type) =>{
-    const inputIndex = this.state.newPet.findIndex(el =>{
-      return el.type === type;
-    });
-    const input = {
-      ...this.state.newPet[inputIndex]
-    }
-    input.value = event.target.value;
-    const newPetList= JSON.parse(JSON.stringify(this.state.newPet));
-    newPetList[inputIndex] = input;
-    this.setState({newPet : newPetList});
-  }
-  radioChangeHandler = (event) =>{
-    let selectedSpecies = event.target.value;
-    this.setState({radioChecked: selectedSpecies});
-    
-  }
-  addPetHandler = (event) =>{
-    const adopted = {
-      name: this.state.newPet[0].value,
-      species: this.state.radioChecked,
-      favFoods:[...this.state.favFoodList], 
-      birthYear: this.state.newPet[1].value,
-      photo: this.state.newPet[3].value,
-      key:this.state.newPet[0].value + Math.floor((Math.random() * 500) + 1) + 'kdsfvsd'
-    }
-    const cleared = [
-      {type: 'Imię', value: '',prop:'text'},
-      {type: 'Rok urodzenia', value: '',prop:'number'},
-      {type: 'Gatunek', value: '', prop:'other'},
-      {type: 'Url zdjęcia', value: '', prop:'text'}
-    ]
-    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
-    newPetArr.push(adopted);
-    axios.post('/pets.json',adopted)
-      .then(response=>console.log(response))
-      .catch(error =>console.log(error)); 
-    this.setState({pets: newPetArr, favFoodList:[], newPet:cleared,radioChecked:'' });
-    event.preventDefault();
-  }
-  favFoodChangeHandler = (event) =>{
-    this.setState({currentFood: event.target.value})
-  }
-  addFoodHandler = () =>{
-    const foodList = [...this.state.favFoodList];
-    foodList.push(this.state.currentFood);
-    this.setState({favFoodList:foodList,currentFood:''})
-  }
-  removeFoodHandler = (pos) =>{
-    const newFoodArr = [...this.state.favFoodList];
-    newFoodArr.splice(pos,1);
-    this.setState({favFoodList: newFoodArr})
-  }
 
   modalStatusHandler = (status) =>{
     this.setState({modalStatus:status})
-  }
+    }
 
   render(){
 
@@ -165,17 +103,7 @@ class App extends Component {
       visiblity={this.state.speciesSelectVal}/>
 
       <Modal
-      inputs={this.state.newPet}
-      inputHandler={this.inputChangeHandler}
-      addPet={this.addPetHandler}
-      tags={this.state.favFoodList}
-      currentFood={this.state.currentFood}
-      foodHandler={this.favFoodChangeHandler}
-      confirmFoodHandler={this.addFoodHandler}
-      removeFood={this.removeFoodHandler}
       species={this.state.speciesList}
-      radioChecked={this.state.radioChecked}
-      radioHandler={this.radioChangeHandler}
       modalStatus={this.state.modalStatus}
       modalHandler={this.modalStatusHandler}
       />
