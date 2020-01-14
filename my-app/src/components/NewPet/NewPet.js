@@ -5,6 +5,7 @@ import classes from "./NewPet.module.css";
 import Tag from "./Tag/Tag";
 import Radio from "./Radio/Radio";
 import axios from "../../axios-pets";
+import Spinner from "../UI/Spinner/Spinner";
 
 import bowlIcon from "../../assets/modal_icons/bowl.svg";
 import catIcon from "../../assets/modal_icons/cat.svg";
@@ -26,6 +27,7 @@ class NewPet extends Component {
         radioChecked:'',
         favFoodList:[],
         currentFood:'',
+        sending:false
 
     }
     inputChangeHandler = (event,type) =>{
@@ -63,6 +65,7 @@ class NewPet extends Component {
         }
     
     addPetHandler = (event) =>{
+        this.setState({sending:true});
         const adopted = {
             name: this.state.newPet[0].value,
             species: this.state.radioChecked,
@@ -78,7 +81,9 @@ class NewPet extends Component {
             {type: 'Url zdjęcia', value: '', prop:'text'}];
             
         axios.post('/pets.json',adopted)
-          .then(response=>console.log(response))
+          .then(response=>{
+              this.setState({sending:false});
+            })
           .catch(error =>console.log(error)); 
         this.setState({favFoodList:[], newPet:cleared,radioChecked:'' });
         event.preventDefault();
@@ -121,15 +126,8 @@ class NewPet extends Component {
                 key={el + pos}/>
             )
         }) 
-    
-        return(
-            <Popup
-            open={this.props.modalStatus}
-            closeOnDocumentClick
-            onClose={this.props.modalHandler.bind(this,false)}
-            modal
-            >
-                <div className={classes.modal}>
+        let modalData = (
+            <div className={classes.modal}>
                     <h1>Dodaj nowego zwierzaka</h1>
                     <span className={classes.modalClose} onClick={this.props.modalHandler.bind(this,false)}>x</span>
     
@@ -158,10 +156,22 @@ class NewPet extends Component {
                         </div>
     
                         <input type="submit" value="Dodaj"/>
-    
                     </form>
     
                 </div>
+        )
+        if (this.state.sending === true) {
+            modalData = <Spinner/>
+        }
+    
+        return(
+            <Popup
+            open={this.props.modalStatus}
+            closeOnDocumentClick
+            onClose={this.props.modalHandler.bind(this,false)}
+            modal
+            >
+                {modalData}
             
             </Popup>
         )
