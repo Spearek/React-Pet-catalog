@@ -3,64 +3,25 @@ import './App.css';
 import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 import NewPet from './components/NewPet/NewPet';
-
+import axios from './axios-pets';
+import Spinner from './components/UI/Spinner/Spinner';
 
 
 class App extends Component {
   state={
-    pets:[
-    {
-      name: "Purrsloud",
-      species: "Cat",
-      favFoods: ["wet food", "dry food", "any food"],
-      birthYear: 2016,
-      photo: "https://learnwebcode.github.io/json-example/images/cat-2.jpg",
-      key: 'dsklfjaad'
-    },
-    {
-      name: "Goodboy",
-      species: "Dog",
-      favFoods: ["bacon", "chicken", "bbq"],
-      birthYear: 2009,
-      photo: "https://images.pexels.com/photos/1629781/pexels-photo-1629781.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=240&w=470",
-      key: 'ibgjlnr453'
-    },
-    {
-      name: "Quika",
-      species: "Rodent",
-      favFoods: ["grass", "hay"],
-      birthYear: 2018,
-      photo: "https://images.pexels.com/photos/60693/guinea-pig-cavy-pet-guinea-60693.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=300&w=500",
-      key: 'vckxlqwkoe23'
-
-    },
-    {
-      name: "Amber",
-      species: "Rodent",
-      favFoods: ["cheese", "corn","flakes"],
-      birthYear: 2015,
-      photo: "https://images.pexels.com/photos/51340/rat-pets-eat-51340.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=400&w=800",
-      key: 'qweofdsif3534'
-    },
-    {
-      name: "Barksalot",
-      species: "Dog",
-      birthYear: 2008,
-      photo:  "https://learnwebcode.github.io/json-example/images/dog-1.jpg",
-      key: 'cvkcjxva'
-    },
-    {
-      name: "Meowsalot",
-      species: "Cat",
-      favFoods: ["tuna", "catnip", "celery"],
-      birthYear: 2012,
-      photo: "https://learnwebcode.github.io/json-example/images/cat-1.jpg",
-      key: 'fskadjv'
-    }],
+    pets:null,
     speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
     modalStatus:false,
 
+  }
+
+  componentDidMount (){
+    axios.get('/pets.json')
+      .then(response=>{
+        let newPets = Object.values(response.data);
+       this.setState ({pets:newPets})
+      })
   }
 
   removePetHandler = (petKey) =>{
@@ -89,6 +50,16 @@ class App extends Component {
 
   render(){
 
+    let petsContent =(
+      <Pets 
+        petList={this.state.pets} 
+        click={this.removePetHandler}
+      visiblity={this.state.speciesSelectVal}/>
+  ) 
+
+    if(!this.state.pets) petsContent=<Spinner/>
+    
+
   return (
     <div className="App">
       <Cockpit
@@ -97,10 +68,7 @@ class App extends Component {
       speciesList={this.state.speciesList}
       sort={this.sortHandler}/>
       
-      <Pets 
-      petList={this.state.pets} 
-      click={this.removePetHandler}
-      visiblity={this.state.speciesSelectVal}/>
+     {petsContent}
 
       <NewPet
       species={this.state.speciesList}
