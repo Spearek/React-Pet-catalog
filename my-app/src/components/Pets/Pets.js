@@ -16,8 +16,8 @@ const pets = props =>{
                 petSpecies={el.species}
                 petPhoto={el.photo}
                 food={el.favFoods}
-                key={el.key}
-                click={props.click.bind(this,el.key)}/>)
+                key={el.id}
+                click={props.click.bind(this,el.id)}/>)
         }
         return null;
     });
