@@ -30,10 +30,11 @@ class App extends Component {
       })
   }
 
-  removePetHandler = (petKey) =>{
+  removePetHandler = (petId) =>{
     const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
+    console.log(newPetArr[0]);
     const petPosition = newPetArr.findIndex(el => {   //zabezpieczyć na wypadek zwrotu -1;
-      return el.key === petKey  
+      return el.id === petId  
     });
     newPetArr.splice(petPosition,1);
     this.setState({pets: newPetArr }); // dodać komunikat gdy nie ma żadnych zwierzaków do wyświetlenia
@@ -60,7 +61,7 @@ class App extends Component {
       <Pets 
         petList={this.state.pets} 
         click={this.removePetHandler}
-      visiblity={this.state.speciesSelectVal}/>
+        visiblity={this.state.speciesSelectVal}/>
   ) 
 
     if(!this.state.pets) petsContent=<Spinner/>
