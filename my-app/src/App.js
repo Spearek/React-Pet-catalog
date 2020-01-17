@@ -19,7 +19,13 @@ class App extends Component {
   componentDidMount (){
     axios.get('/pets.json')
       .then(response=>{
-        let newPets = Object.values(response.data);
+        let newPets = [];
+        for (let key in response.data){
+          newPets.push({
+            ...response.data[key],
+            id: key
+          });
+        }
        this.setState ({pets:newPets})
       })
   }
