@@ -4,8 +4,8 @@ import classes from './speciesFilter.module.css';
 
 const speciesFilter = props =>{
 
-    const species = props.list.map(pet=>{
-        return <SelectedSpecies pet={pet} key={pet + '_key'}/>
+    const species = props.list.map((pet, pos)=>{
+        return <SelectedSpecies pet={pet} key={pet + '_key'} position={pos}/>
     })
 
     return(
