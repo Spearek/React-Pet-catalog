@@ -1,5 +1,6 @@
 import React from 'react';
 import SelectedSpecies from './selectedSpecies/selectedSpecies';
+import classes from './speciesFilter.module.css';
 
 const speciesFilter = props =>{
 
@@ -8,11 +9,12 @@ const speciesFilter = props =>{
     })
 
     return(
-        
-        <select value ={props.selected} onChange={props.change}>
-        <option value = "default">Gatunek</option>
-        {species}
-        </select>
+        <div className={classes.select}>
+            <select value ={props.selected} onChange={props.change}>
+            <option value = "default">Gatunek</option>
+            {species}
+            </select>
+        </div>
     )
 }
 
