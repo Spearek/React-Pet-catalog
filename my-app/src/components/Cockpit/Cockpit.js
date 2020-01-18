@@ -1,12 +1,15 @@
 import React from 'react';
 import classes from './Cockpit.module.css';
 import SpeciesFilter from './speciesFilter/speciesFilter';
+import Navigation from './Navigation/Navigation';
 
 
 const cockpit = props =>{
     
     return(
         <div className={classes.container}>
+            <Navigation/>
+            <div className={classes.sorts}></div>
             <div className={classes.leftElements}>
                 <p>Sortowanie</p>
                 <button onClick={props.sort.bind(this,'birthYear')}>WIEK</button>
