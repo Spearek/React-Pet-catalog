@@ -72,7 +72,6 @@ class NewPet extends Component {
             favFoods:[...this.state.favFoodList], 
             birthYear: this.state.newPet[1].value,
             photo: this.state.newPet[3].value,
-            key:this.state.newPet[0].value + Math.floor((Math.random() * 500) + 1) + 'kdsfvsd'
             }
         const cleared = [
             {type: 'Imię', value: '',prop:'text'},
