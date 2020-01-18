@@ -4,7 +4,10 @@ import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 import NewPet from './components/NewPet/NewPet';
 import axios from './axios-pets';
+
 import Spinner from './components/UI/Spinner/Spinner';
+import backgroundImg from './assets/background/halftone-yellow.png';
+
 
 
 class App extends Component {
@@ -68,7 +71,7 @@ class App extends Component {
     
 
   return (
-    <div className="App">
+    <div className="App" style={{backgroundImage:`url(${backgroundImg})`}}>
       <Cockpit
       selected={this.state.speciesSelectVal}
       change={this.speciesFilterHandler}
