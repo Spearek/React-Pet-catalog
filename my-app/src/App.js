@@ -3,10 +3,12 @@ import './App.css';
 import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 import NewPet from './components/NewPet/NewPet';
+import PetCollection from './components/PetCollection/PetCollection';
 import axios from './axios-pets';
+import {Route} from 'react-router-dom';
 
-import Spinner from './components/UI/Spinner/Spinner';
 import backgroundImg from './assets/background/halftone-yellow.png';
+import petCollection from './components/PetCollection/PetCollection';
 
 
 
@@ -60,15 +62,6 @@ class App extends Component {
 
   render(){
 
-    let petsContent =(
-      <Pets 
-        petList={this.state.pets} 
-        click={this.removePetHandler}
-        visiblity={this.state.speciesSelectVal}/>
-  ) 
-
-    if(!this.state.pets) petsContent=<Spinner/>
-    
 
   return (
     <div className="App" style={{backgroundImage:`url(${backgroundImg})`}}>
@@ -78,7 +71,11 @@ class App extends Component {
       speciesList={this.state.speciesList}
       sort={this.sortHandler}/>
       
-     {petsContent}
+      <Pets 
+        petList={this.state.pets} 
+        click={this.removePetHandler}
+        visiblity={this.state.speciesSelectVal}/>
+
 
       <NewPet
       species={this.state.speciesList}
