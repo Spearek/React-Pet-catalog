@@ -8,7 +8,6 @@ import axios from './axios-pets';
 import {Route} from 'react-router-dom';
 
 import backgroundImg from './assets/background/halftone-yellow.png';
-import petCollection from './components/PetCollection/PetCollection';
 
 
 
@@ -71,11 +70,11 @@ class App extends Component {
       speciesList={this.state.speciesList}
       sort={this.sortHandler}/>
       
-      <Pets 
+      {/*<Pets 
         petList={this.state.pets} 
         click={this.removePetHandler}
         visiblity={this.state.speciesSelectVal}/>
-
+      */}
 
       <NewPet
       species={this.state.speciesList}
@@ -83,6 +82,18 @@ class App extends Component {
       modalHandler={this.modalStatusHandler}
       />
       <button onClick={this.modalStatusHandler.bind(this,true)}>Dodaj nowego Zwierzaka</button>
+
+      <Route path='/my-collection' component={PetCollection}/>
+      <Route path='/' exact render={(props)=>{
+        return(
+        <Pets
+        petList={this.state.pets} 
+        click={this.removePetHandler}
+        visiblity={this.state.speciesSelectVal}
+        {...props}
+        />
+      )}}/>
+      
 
     </div>
   );
