@@ -8,7 +8,8 @@ const cockpit = props =>{
     
     return(
         <div className={classes.container}>
-            <Navigation/>
+            <Navigation
+            modalHandler={props.modalHandler}/>
             <div className={classes.sorts}></div>
             <div className={classes.leftElements}>
                 <p>Sortowanie</p>
