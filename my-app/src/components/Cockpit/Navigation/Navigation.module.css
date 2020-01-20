@@ -41,6 +41,11 @@
    color: orange;
 
 }
+
+.navigation a.active{
+    color: orange;;
+
+}
 .navigation p{
     margin: 0;
     color:#FDD835;
