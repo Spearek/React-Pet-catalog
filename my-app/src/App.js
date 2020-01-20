@@ -68,20 +68,14 @@ class App extends Component {
       selected={this.state.speciesSelectVal}
       change={this.speciesFilterHandler}
       speciesList={this.state.speciesList}
-      sort={this.sortHandler}/>
-      
-      {/*<Pets 
-        petList={this.state.pets} 
-        click={this.removePetHandler}
-        visiblity={this.state.speciesSelectVal}/>
-      */}
+      sort={this.sortHandler}
+      modalHandler={this.modalStatusHandler}/>
 
       <NewPet
       species={this.state.speciesList}
       modalStatus={this.state.modalStatus}
       modalHandler={this.modalStatusHandler}
       />
-      <button onClick={this.modalStatusHandler.bind(this,true)}>Dodaj nowego Zwierzaka</button>
 
       <Route path='/my-collection' component={PetCollection}/>
       <Route path='/' exact render={(props)=>{
