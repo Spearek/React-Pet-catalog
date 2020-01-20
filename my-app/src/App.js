@@ -4,6 +4,8 @@ import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 import NewPet from './components/NewPet/NewPet';
 import PetCollection from './components/PetCollection/PetCollection';
+import MyPets from './components/MyPets/MyPets';
+
 import axios from './axios-pets';
 import {Route} from 'react-router-dom';
 
@@ -78,6 +80,7 @@ class App extends Component {
       />
 
       <Route path='/my-collection' component={PetCollection}/>
+      <Route path='/my-pets' component={MyPets}/>
       <Route path='/' exact render={(props)=>{
         return(
         <Pets
