@@ -9,6 +9,7 @@ import Pets from './components/Pets/Pets';
 import NewPet from './components/NewPet/NewPet';
 import PetCollection from './components/PetCollection/PetCollection';
 import MyPets from './components/MyPets/MyPets';
+import Navigation from './components/Navigation/Navigation';
 import backgroundImg from './assets/background/halftone-yellow.png';
 
 
@@ -16,7 +17,6 @@ import backgroundImg from './assets/background/halftone-yellow.png';
 class App extends Component {
   state={
     pets:null,
-    //speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
     modalStatus:false,
 
@@ -66,12 +66,15 @@ class App extends Component {
 
   return (
     <div className="App" style={{backgroundImage:`url(${backgroundImg})`}}>
+
+      <Navigation
+      modalHandler={this.modalStatusHandler}/>
+      
       <Cockpit
       selected={this.state.speciesSelectVal}
       change={this.speciesFilterHandler}
       speciesList={this.props.species}
-      sort={this.sortHandler}
-      modalHandler={this.modalStatusHandler}/>
+      sort={this.sortHandler}/>
 
       <NewPet
       species={this.props.species}
@@ -87,8 +90,8 @@ class App extends Component {
         petList={this.state.pets} 
         click={this.removePetHandler}
         visiblity={this.state.speciesSelectVal}
-        {...props}
-        />
+        {...props}/>
+        
       )}}/>
       
 
