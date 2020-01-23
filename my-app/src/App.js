@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
+import axios from './axios-pets';
+import {Route} from 'react-router-dom';
+import  {connect} from 'react-redux';
+
 import './App.css';
 import Cockpit from './components/Cockpit/Cockpit';
 import Pets from './components/Pets/Pets';
 import NewPet from './components/NewPet/NewPet';
 import PetCollection from './components/PetCollection/PetCollection';
 import MyPets from './components/MyPets/MyPets';
-
-import axios from './axios-pets';
-import {Route} from 'react-router-dom';
-
 import backgroundImg from './assets/background/halftone-yellow.png';
 
 
@@ -16,7 +16,7 @@ import backgroundImg from './assets/background/halftone-yellow.png';
 class App extends Component {
   state={
     pets:null,
-    speciesList: ["Cat","Dog","Rodent"],
+    //speciesList: ["Cat","Dog","Rodent"],
     speciesSelectVal: 'default',
     modalStatus:false,
 
@@ -69,12 +69,12 @@ class App extends Component {
       <Cockpit
       selected={this.state.speciesSelectVal}
       change={this.speciesFilterHandler}
-      speciesList={this.state.speciesList}
+      speciesList={this.props.species}
       sort={this.sortHandler}
       modalHandler={this.modalStatusHandler}/>
 
       <NewPet
-      species={this.state.speciesList}
+      species={this.props.species}
       modalStatus={this.state.modalStatus}
       modalHandler={this.modalStatusHandler}
       />
@@ -97,4 +97,10 @@ class App extends Component {
 }
 }
 
-export default App;
+const mapStateToProps = state =>{
+  return{
+    species: state.speciesList
+  }
+}
+
+export default connect(mapStateToProps) (App);
