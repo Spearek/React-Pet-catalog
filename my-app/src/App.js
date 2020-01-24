@@ -11,29 +11,19 @@ import PetCollection from './components/PetCollection/PetCollection';
 import MyPets from './components/MyPets/MyPets';
 import Navigation from './components/Navigation/Navigation';
 import backgroundImg from './assets/background/halftone-yellow.png';
+import {storePetsASync} from './store/actions/actionCreators';
 
 
 
 class App extends Component {
   state={
-    pets:null,
     speciesSelectVal: 'default',
     modalStatus:false,
 
   }
 
   componentDidMount (){
-    axios.get('/pets.json')
-      .then(response=>{
-        let newPets = [];
-        for (let key in response.data){
-          newPets.push({
-            ...response.data[key],
-            id: key
-          });
-        }
-       this.setState ({pets:newPets})
-      })
+    this.props.getPets()
   }
 
   removePetHandler = (petId) =>{
@@ -87,7 +77,7 @@ class App extends Component {
       <Route path='/' exact render={(props)=>{
         return(
         <Pets
-        petList={this.state.pets} 
+        petList={this.props.pets} 
         click={this.removePetHandler}
         visiblity={this.state.speciesSelectVal}
         {...props}/>
@@ -102,8 +92,15 @@ class App extends Component {
 
 const mapStateToProps = state =>{
   return{
-    species: state.speciesList
+    species: state.speciesList,
+    pets: state.pets
+  }
+};
+
+const mapDispatchToProps = dispatch =>{
+  return{
+    getPets:()=>dispatch(storePetsASync())
   }
 }
 
-export default connect(mapStateToProps) (App);
+export default connect(mapStateToProps,mapDispatchToProps) (App);
