@@ -27,7 +27,10 @@ const reducer = (state=initialState, action) =>{
         case actionTypes.SORT_PETS:
             const anotherPetArr = JSON.parse(JSON.stringify(state.pets));
             anotherPetArr.sort((a, b) => (a.name > b.name) ? 1 : -1);
-            if (action.property === 'birthYear') anotherPetArr.reverse();
+            if (action.property === 'birthYear'){
+                anotherPetArr.sort((a, b) => (a.birthYear > b.birthYear) ? 1 : -1);
+                anotherPetArr.reverse();
+            } 
             return{
                 ...state,
                 pets:anotherPetArr
