@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from './axios-pets';
 import {Route} from 'react-router-dom';
 import  {connect} from 'react-redux';
 
@@ -11,7 +10,7 @@ import PetCollection from './components/PetCollection/PetCollection';
 import MyPets from './components/MyPets/MyPets';
 import Navigation from './components/Navigation/Navigation';
 import backgroundImg from './assets/background/halftone-yellow.png';
-import {storePetsASync} from './store/actions/actionCreators';
+import {storePetsASync, localPetRemoval} from './store/actions/actionCreators';
 
 
 
@@ -24,16 +23,6 @@ class App extends Component {
 
   componentDidMount (){
     this.props.getPets()
-  }
-
-  removePetHandler = (petId) =>{
-    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
-    console.log(newPetArr[0]);
-    const petPosition = newPetArr.findIndex(el => {   //zabezpieczyć na wypadek zwrotu -1;
-      return el.id === petId  
-    });
-    newPetArr.splice(petPosition,1);
-    this.setState({pets: newPetArr }); // dodać komunikat gdy nie ma żadnych zwierzaków do wyświetlenia
   }
   
   speciesFilterHandler = (event)=>{
@@ -78,7 +67,7 @@ class App extends Component {
         return(
         <Pets
         petList={this.props.pets} 
-        click={this.removePetHandler}
+        click={this.props.removePet}
         visiblity={this.state.speciesSelectVal}
         {...props}/>
         
@@ -99,7 +88,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    getPets:()=>dispatch(storePetsASync())
+    getPets:()=>dispatch(storePetsASync()),
+    removePet:(id)=>dispatch(localPetRemoval(id))
   }
 }
 
