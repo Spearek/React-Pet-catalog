@@ -25,4 +25,12 @@ export const storePetsASync =()=>{
     }
 };
 
+export const localPetRemoval = (id)=>{
+    return{
+        type:actionTypes.LOCAL_PET_REMOVAL,
+        petId: id
+    }
+
+}
+
 
