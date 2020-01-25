@@ -12,6 +12,18 @@ const reducer = (state=initialState, action) =>{
                 ...state,
                 pets:action.newPets
             }
+
+        case actionTypes.LOCAL_PET_REMOVAL:
+            const newPetArr = JSON.parse(JSON.stringify(state.pets));
+            const petPosition = newPetArr.findIndex((el)=>{
+                return el.id === action.petId
+            });
+            newPetArr.splice(petPosition,1);
+            return{
+                ...state,
+                pets:newPetArr
+            }
+
         default: return state;
     }
 };
