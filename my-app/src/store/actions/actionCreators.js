@@ -4,7 +4,7 @@ import axios from '../../axios-pets';
 
 export const storePets =(newPets)=>{
     return{
-        type:actionTypes.STORE_PETS,
+        type: actionTypes.STORE_PETS,
         newPets: newPets
     }
 }
@@ -27,10 +27,17 @@ export const storePetsASync =()=>{
 
 export const localPetRemoval = (id)=>{
     return{
-        type:actionTypes.LOCAL_PET_REMOVAL,
+        type: actionTypes.LOCAL_PET_REMOVAL,
         petId: id
     }
-
 }
+
+export const sortPets = (prop) =>{
+    return{
+        type:actionTypes.SORT_PETS,
+        property: prop
+    }
+}
+
 
 
