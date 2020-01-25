@@ -10,7 +10,7 @@ import PetCollection from './components/PetCollection/PetCollection';
 import MyPets from './components/MyPets/MyPets';
 import Navigation from './components/Navigation/Navigation';
 import backgroundImg from './assets/background/halftone-yellow.png';
-import {storePetsASync, localPetRemoval} from './store/actions/actionCreators';
+import {storePetsASync, localPetRemoval,sortPets} from './store/actions/actionCreators';
 
 
 
@@ -29,12 +29,6 @@ class App extends Component {
     this.setState({speciesSelectVal: event.target.value});
   }
 
-  sortHandler = (property) =>{
-    const newPetArr = JSON.parse(JSON.stringify(this.state.pets));
-    newPetArr.sort((a, b) => (a.name > b.name) ? 1 : -1);
-    if (property === 'birthYear') newPetArr.reverse();
-    this.setState({pets:newPetArr});
-  }
 
   modalStatusHandler = (status) =>{
     this.setState({modalStatus:status})
@@ -53,7 +47,7 @@ class App extends Component {
       selected={this.state.speciesSelectVal}
       change={this.speciesFilterHandler}
       speciesList={this.props.species}
-      sort={this.sortHandler}/>
+      sort={this.props.sortPets}/>
 
       <NewPet
       species={this.props.species}
@@ -89,7 +83,8 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return{
     getPets:()=>dispatch(storePetsASync()),
-    removePet:(id)=>dispatch(localPetRemoval(id))
+    removePet:(id)=>dispatch(localPetRemoval(id)),
+    sortPets:(prop)=>dispatch(sortPets(prop))
   }
 }
 
