@@ -21,14 +21,6 @@ const pet = props =>{
     return(
 
         <div className={classes.petContainer}>
-
-            <div className={classes.leftElements}>
-                <p>Wiek: {props.petAge} lat</p>
-                <div className={classes.petAvatar}>
-                    <img src={props.petPhoto} alt={props.petSpecies + ' photography'}/>
-                </div>
-                <p>XX obserwujących</p>
-            </div>
             
             <div className={classes.rightElements}>
                 <h3>{props.petName}</h3>
@@ -39,6 +31,11 @@ const pet = props =>{
                     {favFood}
                 </div>
                 
+            </div>
+            <div className={classes.leftElements}>
+                <div className={classes.petAvatar}>
+                    <img src={props.petPhoto} alt={props.petSpecies + ' photography'}/>
+                </div>
             </div>
             <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />
         </div>
