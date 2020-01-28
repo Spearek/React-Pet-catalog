@@ -17,6 +17,24 @@ const pet = props =>{
             )
     });
    }
+
+   let polishSpecies;
+
+   switch (props.petSpecies) {
+    case 'Dog':
+      polishSpecies = 'Pies';
+      break;
+    case 'Cat':
+      polishSpecies = 'Kot';
+      break;
+    case 'Rodent':
+      polishSpecies = 'Gryzoń';
+      break;
+    default:
+      polishSpecies = 'Nieznany';
+  }
+
+
   
     return(
 
@@ -26,7 +44,7 @@ const pet = props =>{
                 <h3>{props.petName}</h3>
                 <p className={classes.description}>Kilka przykładowych zdań o zwierzaku. Domyślnie będą one zaciągane z serwera. Na tą chwilę jest to placeholder. Jeśli sprawdzasz ten projekt - zerknij za jakiś czas :)</p>
                 <p>Wiek: {props.petAge} lat</p>
-                <p>Gatunek: {props.petSpecies}</p>
+                <p>Gatunek: {polishSpecies}</p>
                 <div className={classes.foodContainer}>
                     {favFood}
                 </div>
