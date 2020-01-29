@@ -73,7 +73,7 @@ class App extends Component {
 
       <Route path='/my-collection' component={PetCollection}/>
       <Route path='/my-pets' component={MyPets}/>
-      <Route path='/' exact render={(props)=>{
+      <Route path='/React-Pet-catalog' exact render={(props)=>{
         return(
         <Pets
         petList={this.props.pets} 
