@@ -134,3 +134,27 @@ input[type=submit]:focus{
     transform: translateX(2px)translateY(2px);
     box-shadow: none;
 }
+
+@media screen and (max-width:950px){
+
+    .modal form{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .leftElements{
+        width:80%;
+        align-self: flex-start;
+        
+    }
+    .rightElements{
+        width:70%;
+        flex-direction: row;
+        order:-1;
+        margin: 0 auto;
+    }
+    input[type=submit]{
+        width:70%;
+    }
+
+}
