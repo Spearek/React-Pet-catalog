@@ -8,8 +8,9 @@ import Pets from './components/Pets/Pets';
 import NewPet from './components/NewPet/NewPet';
 import PetCollection from './components/PetCollection/PetCollection';
 import MyPets from './components/MyPets/MyPets';
-import Navigation from './components/Navigation/Navigation';
+import Toolbar from './components/Navigation/Toolbar/Toolbar';
 import backgroundImg from './assets/background/halftone-yellow.png';
+import SideDrawer from './components/Navigation/SideDrawer/SideDrawer';
 import {storePetsASync, localPetRemoval,sortPets} from './store/actions/actionCreators';
 
 
@@ -18,7 +19,7 @@ class App extends Component {
   state={
     speciesSelectVal: 'default',
     modalStatus:false,
-
+    sideDrawerOpen:false
   }
 
   componentDidMount (){
@@ -34,14 +35,29 @@ class App extends Component {
     this.setState({modalStatus:status})
     }
 
+  sideDrawerHandler = () =>{
+    this.setState( ( prevState ) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen };
+  } );
+  }
+
   render(){
 
 
   return (
     <div className="App" style={{backgroundImage:`url(${backgroundImg})`}}>
 
-      <Navigation
-      modalHandler={this.modalStatusHandler}/>
+      <Toolbar
+      modalHandler={this.modalStatusHandler}
+      isDrawerOpen={this.state.sideDrawerOpen}
+      burgerClicked={this.sideDrawerHandler}
+      />
+      
+      <SideDrawer
+      modalHandler={this.modalStatusHandler}
+      show={this.state.sideDrawerOpen}
+      clicked={this.sideDrawerHandler}/>
+
       
       <Cockpit
       selected={this.state.speciesSelectVal}
