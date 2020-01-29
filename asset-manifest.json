@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/React-Pet-catalog/static/css/main.f037ce0b.chunk.css",
-    "main.js": "/React-Pet-catalog/static/js/main.6f0b2d31.chunk.js",
-    "main.js.map": "/React-Pet-catalog/static/js/main.6f0b2d31.chunk.js.map",
+    "main.js": "/React-Pet-catalog/static/js/main.e3b76ef1.chunk.js",
+    "main.js.map": "/React-Pet-catalog/static/js/main.e3b76ef1.chunk.js.map",
     "runtime-main.js": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js",
     "runtime-main.js.map": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js.map",
     "static/js/2.37b350b2.chunk.js": "/React-Pet-catalog/static/js/2.37b350b2.chunk.js",
     "static/js/2.37b350b2.chunk.js.map": "/React-Pet-catalog/static/js/2.37b350b2.chunk.js.map",
     "index.html": "/React-Pet-catalog/index.html",
-    "precache-manifest.8ac15a5be846d0d1ba3b3f4f810ac426.js": "/React-Pet-catalog/precache-manifest.8ac15a5be846d0d1ba3b3f4f810ac426.js",
+    "precache-manifest.69b4d1b4412423f6e6002b73a7a1c6b8.js": "/React-Pet-catalog/precache-manifest.69b4d1b4412423f6e6002b73a7a1c6b8.js",
     "service-worker.js": "/React-Pet-catalog/service-worker.js",
     "static/css/main.f037ce0b.chunk.css.map": "/React-Pet-catalog/static/css/main.f037ce0b.chunk.css.map",
     "static/js/2.37b350b2.chunk.js.LICENSE": "/React-Pet-catalog/static/js/2.37b350b2.chunk.js.LICENSE",
@@ -25,6 +25,6 @@
     "static/js/runtime-main.cb7f9932.js",
     "static/js/2.37b350b2.chunk.js",
     "static/css/main.f037ce0b.chunk.css",
-    "static/js/main.6f0b2d31.chunk.js"
+    "static/js/main.e3b76ef1.chunk.js"
   ]
 }
