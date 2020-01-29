@@ -1,0 +1,50 @@
+.navigation{
+    list-style: none;
+    display:flex;
+    padding:0;
+}
+.navigation li{
+    display:inline-block;
+    padding: 10px;
+    height: 100%;
+}
+.navigation a{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display:inline-block;
+    height: 100%;
+    transition: color .2s linear;
+}
+
+.navigation a:hover{
+   color: orange;
+
+}
+
+.navigation a.active{
+    color: orange;;
+
+}
+.navigation p{
+    margin: 0;
+    color:#FDD835;
+    font-weight: bold;
+    letter-spacing: 1px;
+    height: 100%;
+    cursor: pointer;
+    transition: color .2s linear;
+}
+
+.navigation p:hover{
+    color: #00E676;
+}
+
+@media screen and (max-width:499px){
+    .navigation{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    } 
+}

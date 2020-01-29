@@ -1,0 +1,21 @@
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+    background: #0a3d62;
+    width:100%;
+    box-sizing: border-box;
+    padding:10px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.19);
+}
+
+@media (max-width: 499px) {
+    .toolbar{
+        justify-content: space-between;
+    }
+    .desktopOnly {
+        display: none;
+    }
+}
