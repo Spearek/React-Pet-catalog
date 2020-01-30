@@ -2,7 +2,6 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 import classes from './NavigationItems.module.css';
-import Logo from '../../Logo/Logo';
 
 const navigation = (props) =>{
 

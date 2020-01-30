@@ -73,7 +73,16 @@ class App extends Component {
 
       <Route path='/my-collection' component={PetCollection}/>
       <Route path='/my-pets' component={MyPets}/>
-      <Route path='/React-Pet-catalog' exact render={(props)=>{
+      <Route path='/React-Pet-Catalog' exact render={(props)=>{
+        return(
+        <Pets
+        petList={this.props.pets} 
+        click={this.props.removePet}
+        visiblity={this.state.speciesSelectVal}
+        {...props}/>
+        
+      )}}/>
+      <Route path='/' exact render={(props)=>{
         return(
         <Pets
         petList={this.props.pets} 
