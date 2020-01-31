@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware,compose} from 'redux';
 import {Provider} from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 
@@ -10,7 +10,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
 
-const store = createStore(reducer,applyMiddleware(ReduxThunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+
+const store = createStore(reducer,composeEnhancers(applyMiddleware(ReduxThunk)));
 
 ReactDOM.render(<Provider store={store}><BrowserRouter basename="./React-Pet-catalog/"><App /></BrowserRouter></Provider>, document.getElementById('root'));
 
