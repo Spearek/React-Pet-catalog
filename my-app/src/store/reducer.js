@@ -2,7 +2,9 @@ import * as actionTypes from './actions/actionTypes';
 
 const initialState = {
     pets: null,
-    speciesList: ["Cat","Dog","Rodent"]
+    speciesList: ["Cat","Dog","Rodent"],
+    token: null,
+    userId:null
 }
 
 const reducer = (state=initialState, action) =>{
