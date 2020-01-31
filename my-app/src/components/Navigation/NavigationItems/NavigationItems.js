@@ -12,6 +12,7 @@ const navigation = (props) =>{
                 <li><NavLink activeClassName={classes.active} to='/' exact>Lista zwierzaków</NavLink></li> 
                 <li><NavLink activeClassName={classes.active} to='/my-pets'>Moje zwierzaki</NavLink></li>
                 <li><NavLink activeClassName={classes.active} to='/my-collection'>Obserwowane</NavLink></li>
+                <li><NavLink activeClassName={classes.active} to='/authorisation'>Zaloguj się</NavLink></li>
             </ul>
         </nav>
     )
