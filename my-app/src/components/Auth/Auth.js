@@ -1,25 +1,35 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import  {connect} from 'react-redux';
+import {authAsync, changeAuthMethod } from '../../store/actions/actionCreators';
 
 import classes from './Auth.module.css';
 
 class Auth extends Component {
 
     state={
-        haveAccout:true
+        email:'',
+        pass:'',
+        haveAccount:true
     }
-
     authMethodHandler = () =>{
         this.setState((prevState)=>{
-            return{haveAccout:!prevState.haveAccout}
+            return{haveAccount:!prevState.haveAccount}
         })
         
     }
 
+    inputChangeHandler = (event, type) =>{
+        let value = event.target.value;
+        if (type === 'email'){
+            this.setState({email :value})
+        }
+        this.setState({pass :value})
+
+    }
+
     tryToAuthHandler = (event) =>{
         event.preventDefault();
-        console.log('Sent!');
+        this.props.tryToAuth(this.state.email,this.state.pass,this.state.haveAccount);
     }
     
     render(){
@@ -31,8 +41,9 @@ class Auth extends Component {
                     <p>Nic straconego, kliknij <span onClick={this.authMethodHandler}>TUTAJ</span> aby przejść do Rejestracji</p>
             </React.Fragment>);
 
-        if (!this.state.haveAccout){
+        if (!this.state.haveAccount){
             title = 'Zarejestruj się';
+            
             info = (
                 <React.Fragment>
                         <p>Masz już konto?</p>
@@ -49,8 +60,8 @@ class Auth extends Component {
                 <p>{title} w aplikacji aby w pełni korzystać z jej funkcjonalności.</p>
                 <p>Dodawaj nowe zwierzaki, przeglądaj już dodane i twórz własną kolekcję!</p>
                 <form className={classes.authForm} onSubmit={this.tryToAuthHandler}>
-                    <input type="email" placeholder="Adres email" required/>
-                    <input type="password" placeholder="Hasło" required/>
+                    <input type="email" placeholder="Adres email" required onChange={(event)=>this.inputChangeHandler(event,'email')}/>
+                    <input type="password" placeholder="Hasło" required onChange={(event)=>this.inputChangeHandler(event,'pass')}/>
                     <button type="submit">{title}</button>    
                 </form>
                 {info}
@@ -62,5 +73,12 @@ class Auth extends Component {
     }
 }
 
+const mapDispatchToProps = dispatch =>{
+    return{
+        changeMethod:()=>dispatch(changeAuthMethod()),
+        tryToAuth:(email,pass,haveAcc)=>dispatch(authAsync(email,pass,haveAcc))
+    }
+}
 
-export default Auth;
+
+export default connect(null,mapDispatchToProps)(Auth);
