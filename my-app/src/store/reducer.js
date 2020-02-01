@@ -38,6 +38,20 @@ const reducer = (state=initialState, action) =>{
                 pets:anotherPetArr
             }
 
+        case actionTypes.CHANGE_AUTH_METHOD:
+            let methodChanged = !state.haveAccout;
+            return{
+                ...state,
+                haveAccout:methodChanged
+            }
+
+        case actionTypes.AUTH_SUCCEED:
+            return{
+                ...state,
+                token:action.token,
+                userId: action.userId
+            }
+
         default: return state;
     }
 };
