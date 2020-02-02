@@ -82,10 +82,11 @@ export const authAsync = (email,pass,haveAcc) =>{
         axios.post(postURL,userData)
             .then(response=>{
                 console.log(response);
+                const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('userId', response.data.localId);
                 localStorage.setItem('email',response.data.email);
-                local
+                localStorage.setItem('expirationDate', expirationDate);
                 dispatch(authSucceed(response.data.idToken,response.data.localId))
               })
             .catch(err =>{
