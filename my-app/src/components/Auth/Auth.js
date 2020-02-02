@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
-import {authAsync, changeAuthMethod } from '../../store/actions/actionCreators';
+import {authAsync,authErrRemoved} from '../../store/actions/actionCreators';
+import Spinner from '../UI/Spinner/Spinner';
 
 import classes from './Auth.module.css';
 
@@ -12,6 +13,10 @@ class Auth extends Component {
         haveAccount:true
     }
     authMethodHandler = () =>{
+        if (this.props.err){
+            this.props.removeErrInfo();
+        }
+
         this.setState((prevState)=>{
             return{haveAccount:!prevState.haveAccount}
         })
@@ -33,7 +38,7 @@ class Auth extends Component {
     }
     
     render(){
-
+        
         let title = 'Zaloguj się';
         let info = (
             <React.Fragment>
@@ -51,21 +56,31 @@ class Auth extends Component {
                 </React.Fragment>);
         }
 
-        
-
-
-        return(
-            <div className={classes.authContainer}>
+        let authForm = (
+            <React.Fragment>
                 <h2>{title}</h2>
                 <p>{title} w aplikacji aby w pełni korzystać z jej funkcjonalności.</p>
                 <p>Dodawaj nowe zwierzaki, przeglądaj już dodane i twórz własną kolekcję!</p>
                 <form className={classes.authForm} onSubmit={this.tryToAuthHandler}>
                     <input type="email" placeholder="Adres email" required onChange={(event)=>this.inputChangeHandler(event,'email')}/>
                     <input type="password" placeholder="Hasło" required onChange={(event)=>this.inputChangeHandler(event,'pass')}/>
+                    <span>{this.props.err}</span>
                     <button type="submit">{title}</button>    
                 </form>
                 {info}
+            </React.Fragment>
+        )
 
+        if (this.props.loading){
+            authForm = <Spinner/>
+        }
+
+        
+
+
+        return(
+            <div className={classes.authContainer}>
+                {authForm}    
             </div>
 
         )
@@ -73,12 +88,19 @@ class Auth extends Component {
     }
 }
 
+const mapStateToProps = state =>{
+    return{
+      err: state.authError,
+      loading: state.authLoading
+    }
+  };
+
 const mapDispatchToProps = dispatch =>{
     return{
-        changeMethod:()=>dispatch(changeAuthMethod()),
-        tryToAuth:(email,pass,haveAcc)=>dispatch(authAsync(email,pass,haveAcc))
+        tryToAuth:(email,pass,haveAcc)=>dispatch(authAsync(email,pass,haveAcc)),
+        removeErrInfo:()=>dispatch(authErrRemoved())
     }
 }
 
 
-export default connect(null,mapDispatchToProps)(Auth);
+export default connect(mapStateToProps,mapDispatchToProps)(Auth);
