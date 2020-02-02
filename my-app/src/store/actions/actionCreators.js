@@ -66,6 +66,16 @@ export const authErrRemoved = () =>{
     }
 }
 
+export const logout = () =>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('email');
+    localStorage.removeItem('expirationDate');
+    return{
+        type:actionTypes.AUTH_LOGOUT
+    }
+}
+
 export const authAsync = (email,pass,haveAcc) =>{
     return dispatch =>{
         dispatch(authStart())
