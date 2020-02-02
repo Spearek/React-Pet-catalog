@@ -39,23 +39,37 @@ export const sortPets = (prop) =>{
     }
 }
 
-export const changeAuthMethod = ()=>{
+export const authStart = () =>{
     return{
-        type:actionTypes.CHANGE_AUTH_METHOD
+        type: actionTypes.AUTH_START
     }
 }
 
-export const authSucceed = (email,token,userId) =>{
+export const authSucceed = (token,userId) =>{
     return{
         type:actionTypes.AUTH_SUCCEED,
-        email: email,
         token: token,
         userId: userId
     }
 }
 
+export const authFailed = (err)=>{
+    return{
+        type: actionTypes.AUTH_FAILED,
+        error: err,
+    }
+}
+
+export const authErrRemoved = () =>{
+    return{
+        type: actionTypes.AUTH_ERR_REMOVED
+    }
+}
+
 export const authAsync = (email,pass,haveAcc) =>{
     return dispatch =>{
+        dispatch(authStart())
+        dispatch(authErrRemoved())
         const userData = {
             email:email,
             password: pass,
@@ -68,11 +82,11 @@ export const authAsync = (email,pass,haveAcc) =>{
         axios.post(postURL,userData)
             .then(response=>{
                 console.log(response);
-                dispatch(authSucceed(response.data.email,response.data.idToken,response.data.localId))
+                dispatch(authSucceed(response.data.idToken,response.data.localId))
               })
             .catch(err =>{
                 console.log(err.response.data.error);
-
+                dispatch(authFailed(err.response.data.error))
             })
         
 

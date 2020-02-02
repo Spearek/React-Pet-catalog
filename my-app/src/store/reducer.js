@@ -4,7 +4,9 @@ const initialState = {
     pets: null,
     speciesList: ["Cat","Dog","Rodent"],
     token: null,
-    userId:null
+    userId:null,
+    authLoading: false,
+    authError : '',
 }
 
 const reducer = (state=initialState, action) =>{
@@ -37,19 +39,29 @@ const reducer = (state=initialState, action) =>{
                 ...state,
                 pets:anotherPetArr
             }
-
-        case actionTypes.CHANGE_AUTH_METHOD:
-            let methodChanged = !state.haveAccout;
+        case actionTypes.AUTH_START:
             return{
                 ...state,
-                haveAccout:methodChanged
+                authLoading: true
             }
 
         case actionTypes.AUTH_SUCCEED:
             return{
                 ...state,
                 token:action.token,
-                userId: action.userId
+                userId: action.userId,
+                authLoading: false
+            }
+        case actionTypes.AUTH_FAILED:
+            return{
+                ...state,
+                authLoading: false,
+                authError: action.error.message
+            }
+        case actionTypes.AUTH_ERR_REMOVED:
+            return{
+                ...state,
+                authError: ''
             }
 
         default: return state;
