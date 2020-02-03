@@ -76,10 +76,13 @@ export const logout = () =>{
     }
 }
 
-export const authAsync = (email,pass,haveAcc) =>{
+export const authAsync = (email,pass,haveAcc,err) =>{
     return dispatch =>{
         dispatch(authStart())
-        dispatch(authErrRemoved())
+        if(err){
+            dispatch(authErrRemoved())
+        }
+
         const userData = {
             email:email,
             password: pass,

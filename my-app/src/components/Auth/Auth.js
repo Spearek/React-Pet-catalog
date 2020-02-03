@@ -35,7 +35,7 @@ class Auth extends Component {
 
     tryToAuthHandler = (event) =>{
         event.preventDefault();
-        this.props.tryToAuth(this.state.email,this.state.pass,this.state.haveAccount);
+        this.props.tryToAuth(this.state.email,this.state.pass,this.state.haveAccount,this.props.err);
     }
     
     render(){
@@ -104,7 +104,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
-        tryToAuth:(email,pass,haveAcc)=>dispatch(authAsync(email,pass,haveAcc)),
+        tryToAuth:(email,pass,haveAcc,err)=>dispatch(authAsync(email,pass,haveAcc,err)),
         removeErrInfo:()=>dispatch(authErrRemoved())
     }
 }
