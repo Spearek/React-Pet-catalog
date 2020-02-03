@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import {authAsync,authErrRemoved} from '../../store/actions/actionCreators';
 import Spinner from '../UI/Spinner/Spinner';
 
@@ -39,6 +40,10 @@ class Auth extends Component {
     
     render(){
         
+        let redirect = null;
+        if(this.props.isAuthenticated){
+            redirect = <Redirect to='/'/>
+        }
         let title = 'Zaloguj się';
         let info = (
             <React.Fragment>
@@ -80,6 +85,7 @@ class Auth extends Component {
 
         return(
             <div className={classes.authContainer}>
+                {redirect}
                 {authForm}    
             </div>
 
@@ -91,7 +97,8 @@ class Auth extends Component {
 const mapStateToProps = state =>{
     return{
       err: state.authError,
-      loading: state.authLoading
+      loading: state.authLoading,
+      isAuthenticated: state.token !== null
     }
   };
 
