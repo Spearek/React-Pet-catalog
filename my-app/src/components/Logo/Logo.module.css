@@ -5,7 +5,7 @@
     height: 100%;
 }
 
-@media screen and (max-width:499px){
+@media screen and (max-width:569px){
     .logoContainer{
         height: 100px;
         width:140px;

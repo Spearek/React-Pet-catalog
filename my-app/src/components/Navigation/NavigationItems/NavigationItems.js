@@ -7,7 +7,7 @@ const navigation = (props) =>{
 
     let navLinks = (
         <ul className={classes.navigation}>
-            <li onClick={props.modalHandler.bind(this,true)}><p>Dodaj zwierzaka</p></li>
+            <li className={classes.petComponent} onClick={props.modalHandler.bind(this,true)}><p>Dodaj zwierzaka</p></li>
             <li><NavLink activeClassName={classes.active} to='/' exact>Lista zwierzaków</NavLink></li> 
             <li><NavLink activeClassName={classes.active} to='/authorisation'>Zaloguj się</NavLink></li>
         </ul>
@@ -16,7 +16,7 @@ const navigation = (props) =>{
     if(props.isAuth){
         navLinks = (
             <ul className={classes.navigation}>
-                <li onClick={props.modalHandler.bind(this,true)}><p>Dodaj zwierzaka</p></li>
+                <li className={classes.petComponent} onClick={props.modalHandler.bind(this,true)}><p>Dodaj zwierzaka</p></li>
                 <li><NavLink activeClassName={classes.active} to='/' exact>Lista zwierzaków</NavLink></li> 
                 <li><NavLink activeClassName={classes.active} to='/my-pets'>Moje zwierzaki</NavLink></li>
                 <li><NavLink activeClassName={classes.active} to='/my-collection'>Obserwowane</NavLink></li>

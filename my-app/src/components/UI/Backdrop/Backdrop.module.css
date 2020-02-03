@@ -10,7 +10,7 @@
     z-index: 200;
 }
 
-@media screen and (min-width:500px) {
+@media screen and (min-width:570px) {
     .backdrop {
         display: none;
     }

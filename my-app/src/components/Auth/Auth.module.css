@@ -3,7 +3,7 @@
     box-sizing: border-box;
     background:#0a3d62 ;
     color: white;
-    padding: 20px 0;
+    padding: 20px;
     width: 70%;
     border-radius: 5px;
     box-shadow: 0px 4px 5px -1px rgb(8, 8, 8);
@@ -44,6 +44,16 @@
     font-weight: 600;
     font-size: 1.2em;
     cursor: pointer;
+
+}
+
+@media screen and (max-width:700px){
+    .authContainer{
+        width:85%;
+    }
+    .authContainer form{
+        width: 90%;
+    }
 
 }
 

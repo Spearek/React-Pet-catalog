@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-@media screen and (min-width:500px) {
+@media screen and (min-width:570px) {
     .sideDrawer {
         display: none;
     }
