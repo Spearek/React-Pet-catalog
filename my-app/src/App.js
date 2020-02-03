@@ -12,6 +12,7 @@ import Toolbar from './components/Navigation/Toolbar/Toolbar';
 import backgroundImg from './assets/background/halftone-yellow.png';
 import SideDrawer from './components/Navigation/SideDrawer/SideDrawer';
 import Auth from './components/Auth/Auth';
+import Logout from './components/Auth/Logout/Logout';
 import {storePetsASync, localPetRemoval,sortPets} from './store/actions/actionCreators';
 
 
@@ -74,6 +75,7 @@ class App extends Component {
           <Route path='/my-collection' component={PetCollection}/>
           <Route path='/my-pets' component={MyPets}/>
           <Route path='/authorisation' component={Auth}/>
+          <Route path='/logout' component={Logout}/>
           <Route path='/React-Pet-Catalog' exact render={(props)=>{
             return(
               <Pets
