@@ -20,7 +20,8 @@ const toolbar = (props) =>{
             {showLogo}
             <div className={classes.desktopOnly}>
                 <NavigationItems
-                modalHandler={props.modalHandler}/>
+                modalHandler={props.modalHandler}
+                isAuth={props.isAuth}/>
             </div>
         </header>
 

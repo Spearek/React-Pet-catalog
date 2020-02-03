@@ -125,41 +125,52 @@ class NewPet extends Component {
                 key={el + pos}/>
             )
         }) 
-        let modalData = (
-            <div className={classes.modal}>
-                    <h1>Dodaj nowego zwierzaka</h1>
-                    <span className={classes.modalClose} onClick={this.props.modalHandler.bind(this,false)}>x</span>
-    
-                    <form onSubmit={this.addPetHandler}>
-    
-                        <div className={classes.leftElements}>
-                            {inputList} 
-                            <div className={classes.radioContainer}>
-                                <p>Wybierz typ zwierzaka: </p>
-                                <span className={classes.speciesPaws}><img src={pawsIcon} alt="paws icon"/></span>
-                                {radioList}
-                            </div>
-                        </div>   
-    
-                        <div className={classes.rightElements}>
-                            <span><img src={catIcon} alt="cat icon"/></span>
-                            <span><img src={dogIcon} alt="dog icon"/></span>
-                            <span><img src={hamsterIcon} alt="hamster icon"/></span>
-    
-                        </div> 
-    
-                        <div className={classes.tagsContainer}>
-                            <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={this.state.currentFood} onChange={this.favFoodChangeHandler}/>
-                            <span onClick={this.addFoodHandler}><img src={plusIcon} alt="plus sign"/></span>
-                            {tagList}
-                        </div>
-    
-                        <input type="submit" value="Dodaj"/>
-                    </form>
-    
-                </div>
+
+        let modalData=(
+            <div>
+                <h3>Opcja dostępna wyłacznie dla autoryzowanych użytkowników</h3>
+                <p>Zaloguj się lub załóż konto aby mieć możliwość dodania własnego zwierzaka. </p>
+                <button onClick={this.props.modalHandler.bind(this,false)}>Zamknij</button>
+            </div>
         )
-        if (this.state.sending === true) {
+        if(this.props.isAuth && !this.state.sending ){
+            modalData = (
+                <div className={classes.modal}>
+                        <h1>Dodaj nowego zwierzaka</h1>
+                        <span className={classes.modalClose} onClick={this.props.modalHandler.bind(this,false)}>x</span>
+        
+                        <form onSubmit={this.addPetHandler}>
+        
+                            <div className={classes.leftElements}>
+                                {inputList} 
+                                <div className={classes.radioContainer}>
+                                    <p>Wybierz typ zwierzaka: </p>
+                                    <span className={classes.speciesPaws}><img src={pawsIcon} alt="paws icon"/></span>
+                                    {radioList}
+                                </div>
+                            </div>   
+        
+                            <div className={classes.rightElements}>
+                                <span><img src={catIcon} alt="cat icon"/></span>
+                                <span><img src={dogIcon} alt="dog icon"/></span>
+                                <span><img src={hamsterIcon} alt="hamster icon"/></span>
+        
+                            </div> 
+        
+                            <div className={classes.tagsContainer}>
+                                <input type="text" style={favFoodBcg} placeholder="Ulubione jedzenie" value={this.state.currentFood} onChange={this.favFoodChangeHandler}/>
+                                <span onClick={this.addFoodHandler}><img src={plusIcon} alt="plus sign"/></span>
+                                {tagList}
+                            </div>
+        
+                            <input type="submit" value="Dodaj"/>
+                        </form>
+        
+                    </div>
+            )
+
+        }
+        if (this.props.isAuth && this.state.sending) {
             modalData = <Spinner/>
         }
     
@@ -170,8 +181,8 @@ class NewPet extends Component {
             onClose={this.props.modalHandler.bind(this,false)}
             modal
             >
-                {modalData}
-            
+                    {modalData}
+           
             </Popup>
         )
     }

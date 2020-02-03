@@ -44,6 +44,59 @@ class App extends Component {
 
   render(){
 
+    let routes = (
+      <React.Fragment>
+        <Route path='/authorisation' component={Auth}/>
+        <Route path='/React-Pet-Catalog' exact render={(props)=>{
+          return(
+            <Pets
+            petList={this.props.pets} 
+            click={this.props.removePet}
+            visiblity={this.state.speciesSelectVal}
+            {...props}/>
+        
+          )}}/>
+      <Route path='/' exact render={(props)=>{
+        return( 
+          <Pets
+          petList={this.props.pets} 
+          click={this.props.removePet}
+          visiblity={this.state.speciesSelectVal}
+          {...props}/>
+        
+        )}}/>    
+      </React.Fragment>
+    )
+
+    if(this.props.isAuthenticated){
+      routes = (
+        <React.Fragment>
+          <Route path='/my-collection' component={PetCollection}/>
+          <Route path='/my-pets' component={MyPets}/>
+          <Route path='/authorisation' component={Auth}/>
+          <Route path='/React-Pet-Catalog' exact render={(props)=>{
+            return(
+              <Pets
+              petList={this.props.pets} 
+              click={this.props.removePet}
+              visiblity={this.state.speciesSelectVal}
+              {...props}/>
+            
+            )}}/>
+        <Route path='/' exact render={(props)=>{
+          return( 
+            <Pets
+            petList={this.props.pets} 
+            click={this.props.removePet}
+            visiblity={this.state.speciesSelectVal}
+            {...props}/>
+          
+          )}}/>    
+      </React.Fragment>
+
+      )
+    }
+
 
   return (
     <div className="App" style={{backgroundImage:`url(${backgroundImg})`}}>
@@ -52,12 +105,14 @@ class App extends Component {
       modalHandler={this.modalStatusHandler}
       isDrawerOpen={this.state.sideDrawerOpen}
       burgerClicked={this.sideDrawerHandler}
+      isAuth={this.props.isAuthenticated}
       />
       
       <SideDrawer
       modalHandler={this.modalStatusHandler}
       show={this.state.sideDrawerOpen}
-      clicked={this.sideDrawerHandler}/>
+      clicked={this.sideDrawerHandler}
+      isAuth={this.props.isAuthenticated}/>
 
       
       <Cockpit
@@ -70,30 +125,9 @@ class App extends Component {
       species={this.props.species}
       modalStatus={this.state.modalStatus}
       modalHandler={this.modalStatusHandler}
-      />
-
-      <Route path='/my-collection' component={PetCollection}/>
-      <Route path='/my-pets' component={MyPets}/>
-      <Route path='/authorisation' component={Auth}/>
-      <Route path='/React-Pet-Catalog' exact render={(props)=>{
-        return(
-        <Pets
-        petList={this.props.pets} 
-        click={this.props.removePet}
-        visiblity={this.state.speciesSelectVal}
-        {...props}/>
-        
-      )}}/>
-      <Route path='/' exact render={(props)=>{
-        return(
-        <Pets
-        petList={this.props.pets} 
-        click={this.props.removePet}
-        visiblity={this.state.speciesSelectVal}
-        {...props}/>
-        
-      )}}/>
-      
+      isAuth={this.props.isAuthenticated}
+      />    
+      {routes}
 
     </div>
   );
@@ -103,7 +137,8 @@ class App extends Component {
 const mapStateToProps = state =>{
   return{
     species: state.speciesList,
-    pets: state.pets
+    pets: state.pets,
+    isAuthenticated: state.token !== null
   }
 };
 
