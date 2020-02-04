@@ -7,6 +7,8 @@ const initialState = {
     userId:null,
     authLoading: false,
     authError : '',
+    newPetLoading: false,
+    newPerError: '',
 }
 
 const reducer = (state=initialState, action) =>{
@@ -38,6 +40,24 @@ const reducer = (state=initialState, action) =>{
             return{
                 ...state,
                 pets:anotherPetArr
+            }
+        
+        case actionTypes.ADD_NEW_PET_START:
+            return{
+                ...state,
+                newPetLoading: true
+            }
+        case actionTypes.ADD_NEW_PET_SUCCEED:
+            return{
+                ...state,
+                newPetLoading: false,
+            }
+        case actionTypes.ADD_NEW_PET_FAILED:
+            return{
+                ...state,
+                newPetLoading: false,
+                newPerError: action.error
+                
             }
         case actionTypes.AUTH_START:
             return{
