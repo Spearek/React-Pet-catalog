@@ -1,22 +1,22 @@
 .container{
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 0 auto;
+    align-items: flex-start;
+    width: 90%;
+    margin: 20px auto 30px;
     font-size:18px;
 }
 
+.container p{
+    text-align: left;
+    font-weight: 600;
+}
+
 button{
-    color: white;
-    font-size: 18px;
-    padding: 5px 45px;
-    background: rgb(76, 172, 239);
-    border: none;
-    margin-right: 10px;
-    border-radius: 4%;;
-    cursor: pointer;
+    background: #0a3d62;
+
 
 }
 button:hover{
-    background: rgb(22, 151, 243);
+    background: #085d99;
 }

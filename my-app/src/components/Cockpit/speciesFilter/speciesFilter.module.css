@@ -3,7 +3,7 @@ select{
     outline: 0;
     box-shadow: none;
     border: 0;
-    background: #2c3e50;
+    background: #0a3d62;
     background-image: none;
     font-size: 16px;
 }
@@ -37,7 +37,7 @@ select::-ms-expand {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: #34495e;
+    background: #064572;
     cursor: pointer;
     pointer-events: none;
     -webkit-transition: .25s all ease;

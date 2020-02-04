@@ -1,5 +1,5 @@
 .authContainer{
-    margin: 0 auto;
+    margin: 10% auto 0;
     box-sizing: border-box;
     background:#0a3d62 ;
     color: white;
@@ -37,6 +37,11 @@
 .authForm button{
     padding: 20px;
     margin-top:10px;
+    background: rgb(76, 172, 239);
+}
+
+.authForm button:hover{
+    background: rgb(22, 151, 243);
 }
 
 .authContainer span{
