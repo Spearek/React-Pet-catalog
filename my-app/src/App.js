@@ -13,7 +13,7 @@ import backgroundImg from './assets/background/halftone-yellow.png';
 import SideDrawer from './components/Navigation/SideDrawer/SideDrawer';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';
-import {storePetsASync, localPetRemoval,sortPets} from './store/actions/actionCreators';
+import {storePetsASync, localPetRemoval,sortPets, authCheckFromToken} from './store/actions/actionCreators';
 
 
 
@@ -25,7 +25,8 @@ class App extends Component {
   }
 
   componentDidMount (){
-    this.props.getPets()
+    this.props.getPets();
+    this.props.authCheck();
   }
   
   speciesFilterHandler = (event)=>{
@@ -50,22 +51,37 @@ class App extends Component {
         <Route path='/authorisation' component={Auth}/>
         <Route path='/React-Pet-Catalog' exact render={(props)=>{
           return(
-            <Pets
-            petList={this.props.pets} 
-            click={this.props.removePet}
-            visiblity={this.state.speciesSelectVal}
-            {...props}/>
-        
+            <React.Fragment>
+              <Cockpit
+                selected={this.state.speciesSelectVal}
+                change={this.speciesFilterHandler}
+                speciesList={this.props.species}
+                sort={this.props.sortPets}
+                {...props}/>
+              <Pets
+                petList={this.props.pets} 
+                click={this.props.removePet}
+                visiblity={this.state.speciesSelectVal}
+                {...props}/>
+            </React.Fragment>   
           )}}/>
-      <Route path='/' exact render={(props)=>{
-        return( 
-          <Pets
-          petList={this.props.pets} 
-          click={this.props.removePet}
-          visiblity={this.state.speciesSelectVal}
-          {...props}/>
-        
-        )}}/>    
+        <Route path='/' exact render={(props)=>{
+          return( 
+            <React.Fragment>
+              <Cockpit
+                selected={this.state.speciesSelectVal}
+                change={this.speciesFilterHandler}
+                speciesList={this.props.species}
+                sort={this.props.sortPets}
+                {...props}/>
+              <Pets
+                petList={this.props.pets} 
+                click={this.props.removePet}
+                visiblity={this.state.speciesSelectVal}
+                {...props}/>
+            </React.Fragment>
+          
+          )}}/>    
       </React.Fragment>
     )
 
@@ -77,23 +93,38 @@ class App extends Component {
           <Route path='/authorisation' component={Auth}/>
           <Route path='/logout' component={Logout}/>
           <Route path='/React-Pet-Catalog' exact render={(props)=>{
-            return(
+          return(
+            <React.Fragment>
+              <Cockpit
+                selected={this.state.speciesSelectVal}
+                change={this.speciesFilterHandler}
+                speciesList={this.props.species}
+                sort={this.props.sortPets}
+                {...props}/>
               <Pets
-              petList={this.props.pets} 
-              click={this.props.removePet}
-              visiblity={this.state.speciesSelectVal}
-              {...props}/>
-            
-            )}}/>
+                petList={this.props.pets} 
+                click={this.props.removePet}
+                visiblity={this.state.speciesSelectVal}
+                {...props}/>
+            </React.Fragment>   
+          )}}/>
         <Route path='/' exact render={(props)=>{
           return( 
-            <Pets
-            petList={this.props.pets} 
-            click={this.props.removePet}
-            visiblity={this.state.speciesSelectVal}
-            {...props}/>
+            <React.Fragment>
+              <Cockpit
+                selected={this.state.speciesSelectVal}
+                change={this.speciesFilterHandler}
+                speciesList={this.props.species}
+                sort={this.props.sortPets}
+                {...props}/>
+              <Pets
+                petList={this.props.pets} 
+                click={this.props.removePet}
+                visiblity={this.state.speciesSelectVal}
+                {...props}/>
+            </React.Fragment>
           
-          )}}/>    
+          )}}/> 
       </React.Fragment>
 
       )
@@ -115,13 +146,6 @@ class App extends Component {
       show={this.state.sideDrawerOpen}
       clicked={this.sideDrawerHandler}
       isAuth={this.props.isAuthenticated}/>
-
-      
-      <Cockpit
-      selected={this.state.speciesSelectVal}
-      change={this.speciesFilterHandler}
-      speciesList={this.props.species}
-      sort={this.props.sortPets}/>
 
       <NewPet
       species={this.props.species}
@@ -147,6 +171,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
   return{
     getPets:()=>dispatch(storePetsASync()),
+    authCheck:()=>dispatch(authCheckFromToken()),
     removePet:(id)=>dispatch(localPetRemoval(id)),
     sortPets:(prop)=>dispatch(sortPets(prop))
   }
