@@ -4,8 +4,8 @@ import Input from "./Input/Input";
 import classes from "./NewPet.module.css";
 import Tag from "./Tag/Tag";
 import Radio from "./Radio/Radio";
-import axios from "../../axios-pets";
 import Spinner from "../UI/Spinner/Spinner";
+import {connect} from 'react-redux';
 
 import bowlIcon from "../../assets/modal_icons/bowl.svg";
 import catIcon from "../../assets/modal_icons/cat.svg";
@@ -13,6 +13,7 @@ import dogIcon from "../../assets/modal_icons/dog.svg";
 import hamsterIcon from "../../assets/modal_icons/hamster.svg";
 import pawsIcon from "../../assets/modal_icons/paws.svg";
 import plusIcon from "../../assets/photoshop slices/plus.png";
+import {addNewPetAsync} from '../../store/actions/actionCreators';
 
 
 class NewPet extends Component {   
@@ -64,28 +65,24 @@ class NewPet extends Component {
         this.setState({favFoodList: newFoodArr})
         }
     
-    addPetHandler = (event) =>{
-        this.setState({sending:true});
+    addPetHandler = () =>{
         const adopted = {
             name: this.state.newPet[0].value,
             species: this.state.radioChecked,
             favFoods:[...this.state.favFoodList], 
             birthYear: this.state.newPet[1].value,
             photo: this.state.newPet[3].value,
+            addedBy: this.props.user
             }
+        
+        this.props.addPet(adopted,this.props.token,this.props.haveErr);
+
         const cleared = [
             {type: 'Imię', value: '',prop:'text'},
             {type: 'Rok urodzenia', value: '',prop:'number'},
             {type: 'Gatunek', value: '', prop:'other'},
             {type: 'Url zdjęcia', value: '', prop:'text'}];
-            
-        axios.post('/pets.json',adopted)
-          .then(response=>{
-              this.setState({sending:false});
-            })
-          .catch(error =>console.log(error)); 
-        this.setState({favFoodList:[], newPet:cleared,radioChecked:'' });
-        event.preventDefault();
+            this.setState({favFoodList:[], newPet:cleared,radioChecked:'' });
           }
 
     render(){
@@ -133,7 +130,7 @@ class NewPet extends Component {
                 <button onClick={this.props.modalHandler.bind(this,false)}>Zamknij</button>
             </div>
         )
-        if(this.props.isAuth && !this.state.sending ){
+        if(this.props.isAuth && !this.props.isLoading ){
             modalData = (
                 <div className={classes.modal}>
                         <h1>Dodaj nowego zwierzaka</h1>
@@ -170,7 +167,7 @@ class NewPet extends Component {
             )
 
         }
-        if (this.props.isAuth && this.state.sending) {
+        if (this.props.isAuth && this.props.isLoading) {
             modalData = <Spinner/>
         }
     
@@ -188,4 +185,19 @@ class NewPet extends Component {
     }
 };
 
-  export default NewPet;
+const mapStateToProps = state =>{
+    return{
+      isLoading: state.newPetLoading,
+      haveErr: state.newPerError,
+      token: state.token,
+      user: state.userId
+    }
+  };
+  
+  const mapDispatchToProps = dispatch =>{
+    return{
+      addPet: (adopted,token,err) =>dispatch(addNewPetAsync(adopted,token,err))
+    }
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps) (NewPet);
