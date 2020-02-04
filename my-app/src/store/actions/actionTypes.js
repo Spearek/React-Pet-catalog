@@ -8,3 +8,8 @@ export const AUTH_FAILED = 'AUTH_FAILED';
 export const AUTH_ERR_REMOVED = 'AUTH_ERR_REMOVED';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
+export const ADD_NEW_PET_START = 'ADD_NEW_PET_START';
+export const ADD_NEW_PET_SUCCEED = 'ADD_NEW_PET_SUCCEED';
+export const ADD_NEW_PET_FAILED = 'ADD_NEW_PET_FAILED';
+
+
