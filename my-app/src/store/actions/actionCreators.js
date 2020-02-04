@@ -76,6 +76,15 @@ export const logout = () =>{
     }
 }
 
+export const logoutWhenTimeExpires = (expTime) =>{
+    return dispatch =>{
+        setTimeout(()=>{
+            dispatch(logout())
+        },expTime*1000)
+    }
+}
+
+
 export const authAsync = (email,pass,haveAcc,err) =>{
     return dispatch =>{
         dispatch(authStart())
@@ -100,6 +109,7 @@ export const authAsync = (email,pass,haveAcc,err) =>{
                 localStorage.setItem('userId', response.data.localId);
                 localStorage.setItem('email',response.data.email);
                 localStorage.setItem('expirationDate', expirationDate);
+                dispatch(logoutWhenTimeExpires(response.data.expiresIn))
                 dispatch(authSucceed(response.data.idToken,response.data.localId))
               })
             .catch(err =>{
@@ -109,6 +119,29 @@ export const authAsync = (email,pass,haveAcc,err) =>{
         
 
     }
+}
+
+
+export const authCheckFromToken = () =>{
+    return dispatch =>{
+        const token = localStorage.getItem('token');
+        if(!token){
+            dispatch(logout())
+        } else{
+            const expirationTime = new Date(localStorage.getItem('expirationDate')).getTime();
+            const currentTime = new Date().getTime();
+            if(expirationTime <= currentTime){
+                dispatch(logout())
+            } else{
+                const userId = localStorage.getItem('userId');
+                const secondsTillExpire = ((expirationTime - currentTime)/1000);
+                dispatch(authSucceed(token,userId));
+                dispatch(logoutWhenTimeExpires(secondsTillExpire));
+            }
+        }
+
+    }
+
 }
 
 
