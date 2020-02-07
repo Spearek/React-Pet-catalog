@@ -181,4 +181,34 @@ export const authCheckFromToken = () =>{
 }
 
 
+export const fetchUserPets = (fetchedPets) =>{
+    return{
+        type: actionTypes.FETCH_USER_PETS,
+        pets: fetchedPets
+    }
+}
+
+
+export const fetchUserPetsAsync = (userId) =>{
+    return dispatch =>{
+        const queryString = `/pets.json?orderBy="addedBy"&equalTo="${userId}"`;
+        axios.get(queryString)
+          .then(response=>{    
+                let newPets = [];
+                for (let key in response.data){
+                    newPets.push({
+                        ...response.data[key],
+                        id: key
+                        });
+                }
+            console.log(newPets)
+            dispatch(fetchUserPets(newPets))
+            })
+          .catch(err =>{
+              console.log(err.response.data.error) 
+          });
+    }
+
+}
+
 

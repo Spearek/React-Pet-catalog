@@ -9,6 +9,7 @@ const initialState = {
     authError : '',
     newPetLoading: false,
     newPerError: '',
+    userPets: null
 }
 
 const reducer = (state=initialState, action) =>{
@@ -59,6 +60,12 @@ const reducer = (state=initialState, action) =>{
                 newPerError: action.error
                 
             }
+        case actionTypes.FETCH_USER_PETS:
+            return{
+                ...state,
+                userPets:action.pets
+            }
+
         case actionTypes.AUTH_START:
             return{
                 ...state,
