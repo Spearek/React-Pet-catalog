@@ -201,7 +201,6 @@ export const fetchUserPetsAsync = (userId) =>{
                         id: key
                         });
                 }
-            console.log(newPets)
             dispatch(fetchUserPets(newPets))
             })
           .catch(err =>{
