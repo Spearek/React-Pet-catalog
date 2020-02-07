@@ -17,7 +17,8 @@ export const storePetsASync =()=>{
                 for (let key in response.data){
                     newPets.push({
                         ...response.data[key],
-                        id: key
+                        id: key,
+                        addedBy: 'anonymous'
                         });
                 }
             dispatch(storePets(newPets))

@@ -94,7 +94,8 @@ const reducer = (state=initialState, action) =>{
             return{
                 ...state,
                 token: null,
-                userId: null
+                userId: null,
+                userPets: null
             }
 
         default: return state;
