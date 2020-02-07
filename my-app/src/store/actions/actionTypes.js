@@ -12,4 +12,6 @@ export const ADD_NEW_PET_START = 'ADD_NEW_PET_START';
 export const ADD_NEW_PET_SUCCEED = 'ADD_NEW_PET_SUCCEED';
 export const ADD_NEW_PET_FAILED = 'ADD_NEW_PET_FAILED';
 
+export const FETCH_USER_PETS = 'FETCH_USER_PETS';
+
 
