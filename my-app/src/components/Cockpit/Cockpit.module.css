@@ -12,8 +12,9 @@
     font-weight: 600;
 }
 
-button{
+.container button{
     background: #0a3d62;
+    margin: 10px;
 
 
 }

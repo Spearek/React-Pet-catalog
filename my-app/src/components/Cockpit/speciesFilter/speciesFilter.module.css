@@ -48,3 +48,11 @@ select::-ms-expand {
   .select:hover::after {
     color: #f39c12;
   }
+
+  @media screen and (max-width:430px){
+
+    .select{
+      width:14em;
+    }
+
+  }
