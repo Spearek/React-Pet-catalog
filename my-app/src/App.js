@@ -62,6 +62,7 @@ class App extends Component {
                 petList={this.props.pets} 
                 click={this.props.removePet}
                 visiblity={this.state.speciesSelectVal}
+                userId={this.props.id}
                 {...props}/>
             </React.Fragment>   
           )}}/>
@@ -78,6 +79,7 @@ class App extends Component {
                 petList={this.props.pets} 
                 click={this.props.removePet}
                 visiblity={this.state.speciesSelectVal}
+                userId={this.props.id}
                 {...props}/>
             </React.Fragment>
           
@@ -105,6 +107,7 @@ class App extends Component {
                 petList={this.props.pets} 
                 click={this.props.removePet}
                 visiblity={this.state.speciesSelectVal}
+                userId={this.props.id}
                 {...props}/>
             </React.Fragment>   
           )}}/>
@@ -121,6 +124,7 @@ class App extends Component {
                 petList={this.props.pets} 
                 click={this.props.removePet}
                 visiblity={this.state.speciesSelectVal}
+                userId={this.props.id}
                 {...props}/>
             </React.Fragment>
           
@@ -164,7 +168,8 @@ const mapStateToProps = state =>{
   return{
     species: state.speciesList,
     pets: state.pets,
-    isAuthenticated: state.token !== null
+    isAuthenticated: state.token !== null,
+    id: state.userId
   }
 };
 
