@@ -26,6 +26,7 @@ class MyPets extends Component {
                 <p>W każdej chwili możesz usunąć wybranego zwierzaka z aplikacji klikając na <span style={{color:'white',fontSize:'16px',marginTop:'10px',display:'inline-block',fontWeight:'600',background:'red',padding:'5px 15px',borderRadius:'5px'}}>X</span></p>
                 <Pets
                 petList={this.props.userPets}
+                userId={this.props.id}
                 visiblity='default'
                 />
                 {nonePets}
