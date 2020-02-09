@@ -21,6 +21,8 @@ const pets = props =>{
                     petPhoto={el.photo}
                     food={el.favFoods}
                     key={el.id}
+                    likedArr={el.likedBy}
+                    userId={props.userId}
                     //click={props.click.bind(this,el.id)}
                     />)
             }
