@@ -2,13 +2,27 @@ import React from 'react';
 import FavFood from './FavFood/FavFood';
 import classes from './Pet.module.css';
 
-import deleteBtn from '../../../assets/photoshop slices/delete.png'
+import deleteBtn from '../../../assets/photoshop slices/delete.png';
+import emptyLike from '../../../assets/like_icons/love_gray.svg';
+import like from '../../../assets/like_icons/love.svg';
 
 
 const pet = props =>{
 
     let favFood = null;
      let haveFav = null;
+     let isLiked = null;
+
+  if(props.likedArr){
+    isLiked = props.likedArr.some(val=> val === props.userId)
+  }
+
+  let whichLike = emptyLike;
+
+  if(isLiked){
+    whichLike = like;
+  }
+
    if (props.food !== undefined ){
        
        haveFav = <h4>Ulubione jedzenie:</h4>
@@ -23,6 +37,8 @@ const pet = props =>{
    }
 
    let polishSpecies;
+
+  
 
    switch (props.petSpecies) {
     case 'Dog':
@@ -61,6 +77,7 @@ const pet = props =>{
                 </div>
             </div>
             <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />
+            <img src={whichLike} className={classes.likeIcon} alt='hear icon'/>
         </div>
     )
 }
