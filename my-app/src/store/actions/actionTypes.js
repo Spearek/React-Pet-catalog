@@ -14,4 +14,5 @@ export const ADD_NEW_PET_FAILED = 'ADD_NEW_PET_FAILED';
 
 export const FETCH_USER_PETS = 'FETCH_USER_PETS';
 
+export const LIKE_PET_UPDATE = 'LIKE_PET_UPDATE';
 
