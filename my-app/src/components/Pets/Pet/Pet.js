@@ -3,8 +3,7 @@ import FavFood from './FavFood/FavFood';
 import classes from './Pet.module.css';
 
 import deleteBtn from '../../../assets/photoshop slices/delete.png';
-import emptyLike from '../../../assets/like_icons/love_gray.svg';
-import like from '../../../assets/like_icons/love.svg';
+import Favorites from './Favorites/Favorites';
 
 
 const pet = props =>{
@@ -15,12 +14,6 @@ const pet = props =>{
 
   if(props.likedArr){
     isLiked = props.likedArr.some(val=> val === props.userId)
-  }
-
-  let whichLike = emptyLike;
-
-  if(isLiked){
-    whichLike = like;
   }
 
    if (props.food !== undefined ){
@@ -77,7 +70,7 @@ const pet = props =>{
                 </div>
             </div>
             <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />
-            <img src={whichLike} className={classes.likeIcon} alt='hear icon'/>
+            <Favorites isLiked = {isLiked} petId={props.petId}/>
         </div>
     )
 }
