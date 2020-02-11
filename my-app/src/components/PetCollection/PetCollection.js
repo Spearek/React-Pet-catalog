@@ -13,6 +13,10 @@ class PetCollection extends Component{
         if(this.props.allPets){
             favoritePets = this.props.allPets.filter(el => el.likedBy).filter(el => el.likedBy.some(el => el === this.props.id ));
         }
+        let noneFavorites = null;
+        if (favoritePets && favoritePets.length < 1){
+            noneFavorites = <p style={{fontSize:'22px',fontWeight:'600',color:'red', marginTop:'10%'}}>Nie obserwujesz obecnie żadnych zwierzaków.</p>
+        }
         return(
             <div>
                 <h2>Lista obserwowanych Zwierzaków</h2>
@@ -20,6 +24,8 @@ class PetCollection extends Component{
                 petList={favoritePets}
                 userId={this.props.id}
                 visiblity='default'/>
+                {noneFavorites}
+                
             </div>
             
         )
