@@ -42,6 +42,16 @@ const reducer = (state=initialState, action) =>{
                 ...state,
                 pets:anotherPetArr
             }
+        case actionTypes.LIKE_PET_UPDATE:
+            let whichPet = state.pets.findIndex(el => el.id === action.id);
+            const petArray = JSON.parse(JSON.stringify(state.pets));
+            petArray[whichPet] = action.newPetSpec;
+
+            return{
+                ...state,
+                pets: petArray
+                
+            }
         
         case actionTypes.ADD_NEW_PET_START:
             return{
