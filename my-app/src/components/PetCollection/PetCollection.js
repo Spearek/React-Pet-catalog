@@ -11,20 +11,11 @@ class PetCollection extends Component{
 
         let favoritePets = null;
         if(this.props.allPets){
-            favoritePets = this.props.allPets.filter(el =>{
-                return el.likedBy;
-            });
-            console.log(favoritePets);
+            favoritePets = this.props.allPets.filter(el => el.likedBy).filter(el => el.likedBy.some(el => el === this.props.id ));
         }
-        
-
-
-
         return(
             <div>
                 <h2>Lista obserwowanych Zwierzaków</h2>
-                <p>W tym miejscu znajdzie się lista zwierzaków obserwowanych przez użytkownia.</p>
-                <p>Na ten moment jest to komponent zastępczy. Zapraszam wkrótce.</p>
                 <Pets
                 petList={favoritePets}
                 userId={this.props.id}
@@ -44,13 +35,7 @@ const mapStateToProps = state =>{
     }
   };
 
-const mapDispatchToProps = dispatch =>{
-    return{
-      fetchPets:(id)=>dispatch(fetchUserPetsAsync(id)),
-    }
-  }
-
-export default connect(mapStateToProps,mapDispatchToProps) (PetCollection);
+export default connect(mapStateToProps) (PetCollection);
 
 
 
