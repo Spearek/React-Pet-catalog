@@ -9,7 +9,8 @@ const initialState = {
     authError : '',
     newPetLoading: false,
     newPerError: '',
-    userPets: null
+    userPets: null,
+    needToFetch: true
 }
 
 const reducer = (state=initialState, action) =>{
@@ -17,7 +18,8 @@ const reducer = (state=initialState, action) =>{
         case actionTypes.STORE_PETS:
             return{
                 ...state,
-                pets:action.newPets
+                pets:action.newPets,
+                needToFetch:true,
             }
 
         case actionTypes.LOCAL_PET_REMOVAL:
@@ -62,6 +64,7 @@ const reducer = (state=initialState, action) =>{
             return{
                 ...state,
                 newPetLoading: false,
+                needToFetch: true,
             }
         case actionTypes.ADD_NEW_PET_FAILED:
             return{
@@ -73,7 +76,8 @@ const reducer = (state=initialState, action) =>{
         case actionTypes.FETCH_USER_PETS:
             return{
                 ...state,
-                userPets:action.pets
+                userPets:action.pets,
+                needToFetch: false,
             }
 
         case actionTypes.AUTH_START:
@@ -87,7 +91,8 @@ const reducer = (state=initialState, action) =>{
                 ...state,
                 token:action.token,
                 userId: action.userId,
-                authLoading: false
+                authLoading: false,
+                needToFetch: true
             }
         case actionTypes.AUTH_FAILED:
             return{
@@ -105,7 +110,8 @@ const reducer = (state=initialState, action) =>{
                 ...state,
                 token: null,
                 userId: null,
-                userPets: null
+                userPets: null,
+                needToFetch: true
             }
 
         default: return state;

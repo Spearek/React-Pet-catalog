@@ -8,7 +8,7 @@ import Pets from '../Pets/Pets';
 class MyPets extends Component {
 
     componentDidMount(){
-        this.props.fetchPets(this.props.id);
+        this.props.fetchPets(this.props.id,this.props.needToFetch);
     }
 
     render(){
@@ -40,13 +40,14 @@ class MyPets extends Component {
 const mapStateToProps = state =>{
     return{
       id: state.userId,
-      userPets: state.userPets
+      userPets: state.userPets,
+      needToFetch: state.needToFetch
     }
   };
 
 const mapDispatchToProps = dispatch =>{
     return{
-      fetchPets:(id)=>dispatch(fetchUserPetsAsync(id)),
+      fetchPets:(id,needToFetch)=>dispatch(fetchUserPetsAsync(id,needToFetch)),
     }
   }
 
