@@ -28,6 +28,7 @@ class MyPets extends Component {
                 petList={this.props.userPets}
                 userId={this.props.id}
                 visiblity='default'
+                myPetsSection
                 />
                 {nonePets}
             </div>
