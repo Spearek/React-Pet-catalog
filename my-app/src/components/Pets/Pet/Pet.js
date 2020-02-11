@@ -12,7 +12,7 @@ const pet = props =>{
      let haveFav = null;
      let isLiked = null;
 
-  if(props.likedArr){
+  if(props.likedArr && props.likedArr.length > 0){
     isLiked = props.likedArr.some(val=> val === props.userId)
   }
 
@@ -70,7 +70,7 @@ const pet = props =>{
                 </div>
             </div>
             <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />
-            <Favorites isLiked = {isLiked} petId={props.petId}/>
+            <Favorites isLiked = {isLiked} petId={props.petId} myPetsSection={props.myPetsSection}/>
         </div>
     )
 }

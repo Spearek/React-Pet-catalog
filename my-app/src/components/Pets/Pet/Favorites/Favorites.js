@@ -28,10 +28,17 @@ class Favorites extends Component {
             cursor: 'pointer'
         }
 
+        let likeImage = <img src={iconStatus} style={iconStyles} alt='heart icon' onClick={this.clickHandler}/>
+
+        if(!this.props.isAuthenticated || this.props.myPetsSection){
+          likeImage = null;
+        }
+
 
         return(
-
-            <img src={iconStatus} style={iconStyles} alt='heart icon' onClick={this.clickHandler}/>
+          <React.Fragment>
+            {likeImage} 
+          </React.Fragment>         
 
         )
     }
