@@ -8,7 +8,7 @@ import {likePetAsync} from '../../../../store/actions/actionCreators';
 class Favorites extends Component {
 
     clickHandler = () =>{
-        this.props.likeClicked(this.props.token,this.props.petId,this.props.userId,this.props.petArr,this.props.userPetArr);
+        this.props.likeClicked(this.props.token,this.props.petId,this.props.userId,this.props.petArr);
     }
 
     render(){
@@ -42,14 +42,13 @@ const mapStateToProps = state =>{
       token: state.token,
       isAuthenticated: state.token !== null,
       petArr: state.pets,
-      userPetArr: state.userPets,
       userId: state.userId
     }
   };
   
   const mapDispatchToProps = dispatch =>{
     return{
-      likeClicked:(token,petId,userId,pets,userPets)=>dispatch(likePetAsync(token,petId,userId,pets,userPets)),
+      likeClicked:(token,petId,userId,pets)=>dispatch(likePetAsync(token,petId,userId,pets)),
     }
   }
 
