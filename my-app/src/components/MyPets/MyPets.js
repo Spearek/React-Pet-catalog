@@ -13,9 +13,10 @@ class MyPets extends Component {
 
     render(){
 
-        let nonePets = <p style={{fontSize:'22px',fontWeight:'600',color:'red', marginTop:'10%'}}>Nie masz jeszcze żadnych dodanych zwierzaków.</p>;
-        if((this.props.userPets || null) && (this.props.userPets.length > 1)){
-            nonePets = null;
+        let nonePets = null;
+        
+        if((this.props.userPets) && (this.props.userPets.length < 1)){
+            nonePets = <p style={{fontSize:'22px',fontWeight:'600',color:'red', marginTop:'10%'}}>Nie masz jeszcze żadnych dodanych zwierzaków.</p>;;
         }
 
 
