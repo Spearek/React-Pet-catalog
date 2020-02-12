@@ -2,7 +2,6 @@ import React from 'react';
 import FavFood from './FavFood/FavFood';
 import classes from './Pet.module.css';
 
-import deleteBtn from '../../../assets/photoshop slices/delete.png';
 import Favorites from './Favorites/Favorites';
 
 
@@ -47,6 +46,11 @@ const pet = props =>{
       polishSpecies = 'Nieznany';
   }
 
+  let removeBtn = null;
+  if (props.myPetsSection){
+    removeBtn = <span className={classes.remove} onClick={props.click}>X</span>
+  }
+
 
   
     return(
@@ -69,7 +73,7 @@ const pet = props =>{
                     <img src={props.petPhoto} alt={props.petSpecies + ' photography'}/>
                 </div>
             </div>
-            <img className={classes.remove} onClick={props.click} src={deleteBtn} alt='delete button' />
+            {removeBtn}
             <Favorites isLiked = {isLiked} petId={props.petId} myPetsSection={props.myPetsSection}/>
         </div>
     )
