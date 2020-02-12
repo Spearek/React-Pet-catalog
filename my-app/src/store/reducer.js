@@ -24,13 +24,15 @@ const reducer = (state=initialState, action) =>{
 
         case actionTypes.LOCAL_PET_REMOVAL:
             const newPetArr = JSON.parse(JSON.stringify(state.pets));
-            const petPosition = newPetArr.findIndex((el)=>{
-                return el.id === action.petId
-            });
-            newPetArr.splice(petPosition,1);
+            const newUserPetArr = JSON.parse(JSON.stringify(state.userPets));
+            const globalPetPosition = newPetArr.findIndex(el => el.id === action.petId);
+            const userPetPosition = newUserPetArr.findIndex(el => el.id === action.petId);
+            newPetArr.splice(globalPetPosition,1);
+            newUserPetArr.splice(userPetPosition,1);
             return{
                 ...state,
-                pets:newPetArr
+                pets:newPetArr,
+                userPets: newUserPetArr
             }
 
         case actionTypes.SORT_PETS:
