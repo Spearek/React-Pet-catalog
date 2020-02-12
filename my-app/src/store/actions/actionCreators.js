@@ -69,6 +69,23 @@ export const localPetRemoval = (id)=>{
     }
 }
 
+export const petRemovalAsync = (petId,userId,userPets,token) =>{
+    return dispatch =>{
+        let clickedPet = userPets.filter(el => el.id === petId)[0]; 
+        if (clickedPet.addedBy === userId){
+            axios.delete(`/pets/${petId}.json?auth=` + token)
+                    .then(response=>{
+                        dispatch(localPetRemoval(petId))
+                        console.log(response.data)
+                    })
+                    .catch(err =>{
+                        console.log(err.response.data)
+                    })
+                }
+
+        }
+    }
+
 export const sortPets = (prop) =>{
     return{
         type:actionTypes.SORT_PETS,
