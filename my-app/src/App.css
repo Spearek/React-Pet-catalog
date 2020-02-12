@@ -7,6 +7,11 @@
 
 }
 
+.welcomeUser{
+padding: 10px;
+color: #0a3d62;
+}
+
 button{
   color: white;
   font-size: 18px;

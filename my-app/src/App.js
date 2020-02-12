@@ -134,6 +134,8 @@ class App extends Component {
       )
     }
 
+    let loggedAs=localStorage.getItem('email');
+
 
   return (
     <div className="App" style={{backgroundImage:`url(${backgroundImg})`}}>
@@ -156,7 +158,8 @@ class App extends Component {
       modalStatus={this.state.modalStatus}
       modalHandler={this.modalStatusHandler}
       isAuth={this.props.isAuthenticated}
-      />    
+      />
+      {(this.props.isAuthenticated) ? <div className='welcomeUser'><h3>Zalogowano jako: {loggedAs}</h3></div> : null}   
       {routes}
 
     </div>
@@ -178,7 +181,7 @@ const mapDispatchToProps = dispatch =>{
     getPets:()=>dispatch(storePetsASync()),
     authCheck:()=>dispatch(authCheckFromToken()),
     removePet:(id)=>dispatch(localPetRemoval(id)),
-    sortPets:(prop)=>dispatch(sortPets(prop))
+    sortPets:(prop)=>dispatch(sortPets(prop)),
   }
 }
 
