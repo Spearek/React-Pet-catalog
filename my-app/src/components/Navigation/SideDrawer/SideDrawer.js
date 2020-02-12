@@ -15,7 +15,7 @@ const sideDrawer = (props) =>{
     return(
         <React.Fragment>
             <Backdrop show={props.show} clicked={props.clicked}/>
-            <div className={attachedClasses.join(' ')}>
+            <div className={attachedClasses.join(' ')}onClick={props.clicked}>
                 <NavigationItems
                 modalHandler={props.modalHandler}
                 isAuth={props.isAuth}/>
