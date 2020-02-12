@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
-import  {fetchUserPetsAsync} from '../../store/actions/actionCreators';
+import  {localPetRemoval} from '../../store/actions/actionCreators';
 
 import Pets from '../Pets/Pets';
 
@@ -23,6 +23,7 @@ class PetCollection extends Component{
                 <Pets
                 petList={favoritePets}
                 userId={this.props.id}
+                click={this.props.removePet}
                 visiblity='default'/>
                 {noneFavorites}
                 
@@ -41,7 +42,13 @@ const mapStateToProps = state =>{
     }
   };
 
-export default connect(mapStateToProps) (PetCollection);
+const mapDispatchToProps = dispatch =>{
+    return{
+      removePet:(id)=>dispatch(localPetRemoval(id))
+    }
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps) (PetCollection);
 
 
 
