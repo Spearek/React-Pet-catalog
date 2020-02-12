@@ -3,7 +3,7 @@ import  {connect} from 'react-redux';
 
 import emptyLike from '../../../../assets/like_icons/love_gray.svg';
 import like from '../../../../assets/like_icons/love.svg';
-import {likePetAsync} from '../../../../store/actions/actionCreators';
+import * as actions from '../../../../store/actions/index';
 
 class Favorites extends Component {
 
@@ -55,7 +55,7 @@ const mapStateToProps = state =>{
   
   const mapDispatchToProps = dispatch =>{
     return{
-      likeClicked:(token,petId,userId,pets)=>dispatch(likePetAsync(token,petId,userId,pets)),
+      likeClicked:(token,petId,userId,pets)=>dispatch(actions.likePetAsync(token,petId,userId,pets)),
     }
   }
 

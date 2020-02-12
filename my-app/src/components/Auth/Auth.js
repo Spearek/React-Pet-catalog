@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
-import {authAsync,authErrRemoved} from '../../store/actions/actionCreators';
+import * as actions from '../../store/actions/index';
 import Spinner from '../UI/Spinner/Spinner';
 
 import classes from './Auth.module.css';
@@ -104,8 +104,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
-        tryToAuth:(email,pass,haveAcc,err)=>dispatch(authAsync(email,pass,haveAcc,err)),
-        removeErrInfo:()=>dispatch(authErrRemoved())
+        tryToAuth:(email,pass,haveAcc,err)=>dispatch(actions.authAsync(email,pass,haveAcc,err)),
+        removeErrInfo:()=>dispatch(actions.authErrRemoved())
     }
 }
 

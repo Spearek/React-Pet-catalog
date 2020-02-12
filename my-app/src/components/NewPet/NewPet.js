@@ -13,7 +13,7 @@ import dogIcon from "../../assets/modal_icons/dog.svg";
 import hamsterIcon from "../../assets/modal_icons/hamster.svg";
 import pawsIcon from "../../assets/modal_icons/paws.svg";
 import plusIcon from "../../assets/photoshop slices/plus.png";
-import {addNewPetAsync} from '../../store/actions/actionCreators';
+import * as actions from '../../store/actions/index';
 
 
 class NewPet extends Component {   
@@ -196,7 +196,7 @@ const mapStateToProps = state =>{
   
   const mapDispatchToProps = dispatch =>{
     return{
-      addPet: (adopted,token,err) =>dispatch(addNewPetAsync(adopted,token,err))
+      addPet: (adopted,token,err) =>dispatch(actions.addNewPetAsync(adopted,token,err))
     }
   }
 

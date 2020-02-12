@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
-import  {fetchUserPetsAsync,petRemovalAsync} from '../../store/actions/actionCreators';
+import  * as actions from '../../store/actions/index';
 
 import Pets from '../Pets/Pets';
 
@@ -54,8 +54,8 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
-      fetchPets:(id,needToFetch)=>dispatch(fetchUserPetsAsync(id,needToFetch)),
-      removePet:(petId,userId,userPets,token)=>dispatch(petRemovalAsync(petId,userId,userPets,token))
+      fetchPets:(id,needToFetch)=>dispatch(actions.fetchUserPetsAsync(id,needToFetch)),
+      removePet:(petId,userId,userPets,token)=>dispatch(actions.petRemovalAsync(petId,userId,userPets,token))
     }
   }
 

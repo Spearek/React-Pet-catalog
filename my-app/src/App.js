@@ -13,7 +13,7 @@ import backgroundImg from './assets/background/halftone-yellow.png';
 import SideDrawer from './components/Navigation/SideDrawer/SideDrawer';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';
-import {storePetsASync, localPetRemoval,sortPets, authCheckFromToken} from './store/actions/actionCreators';
+import * as actions from './store/actions/index';
 import Footer from './components/Footer/Footer';
 
 
@@ -180,10 +180,10 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return{
-    getPets:()=>dispatch(storePetsASync()),
-    authCheck:()=>dispatch(authCheckFromToken()),
-    removePet:(id)=>dispatch(localPetRemoval(id)),
-    sortPets:(prop)=>dispatch(sortPets(prop)),
+    getPets:()=>dispatch(actions.storePetsASync()),
+    authCheck:()=>dispatch(actions.authCheckFromToken()),
+    removePet:(id)=>dispatch(actions.localPetRemoval(id)),
+    sortPets:(prop)=>dispatch(actions.sortPets(prop)),
   }
 }
 

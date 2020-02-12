@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
-import  {localPetRemoval} from '../../store/actions/actionCreators';
+import  * as actions from '../../store/actions/index';
 
 import Pets from '../Pets/Pets';
 
@@ -44,7 +44,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
     return{
-      removePet:(id)=>dispatch(localPetRemoval(id))
+      removePet:(id)=>dispatch(actions.localPetRemoval(id))
     }
   }
 
