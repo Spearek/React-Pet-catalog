@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/React-Pet-catalog/static/css/main.15a2d206.chunk.css",
-    "main.js": "/React-Pet-catalog/static/js/main.f450dc1e.chunk.js",
-    "main.js.map": "/React-Pet-catalog/static/js/main.f450dc1e.chunk.js.map",
+    "main.css": "/React-Pet-catalog/static/css/main.b491be28.chunk.css",
+    "main.js": "/React-Pet-catalog/static/js/main.be855928.chunk.js",
+    "main.js.map": "/React-Pet-catalog/static/js/main.be855928.chunk.js.map",
     "runtime-main.js": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js",
     "runtime-main.js.map": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js.map",
-    "static/js/2.dfc677ac.chunk.js": "/React-Pet-catalog/static/js/2.dfc677ac.chunk.js",
-    "static/js/2.dfc677ac.chunk.js.map": "/React-Pet-catalog/static/js/2.dfc677ac.chunk.js.map",
+    "static/js/2.83d34195.chunk.js": "/React-Pet-catalog/static/js/2.83d34195.chunk.js",
+    "static/js/2.83d34195.chunk.js.map": "/React-Pet-catalog/static/js/2.83d34195.chunk.js.map",
     "index.html": "/React-Pet-catalog/index.html",
-    "precache-manifest.51a27d44a0cb551b36cb7b3d5b51ed36.js": "/React-Pet-catalog/precache-manifest.51a27d44a0cb551b36cb7b3d5b51ed36.js",
+    "precache-manifest.94a16a8fd08a21d1b4a49e804f2efa65.js": "/React-Pet-catalog/precache-manifest.94a16a8fd08a21d1b4a49e804f2efa65.js",
     "service-worker.js": "/React-Pet-catalog/service-worker.js",
-    "static/css/main.15a2d206.chunk.css.map": "/React-Pet-catalog/static/css/main.15a2d206.chunk.css.map",
-    "static/js/2.dfc677ac.chunk.js.LICENSE": "/React-Pet-catalog/static/js/2.dfc677ac.chunk.js.LICENSE",
+    "static/css/main.b491be28.chunk.css.map": "/React-Pet-catalog/static/css/main.b491be28.chunk.css.map",
+    "static/js/2.83d34195.chunk.js.LICENSE": "/React-Pet-catalog/static/js/2.83d34195.chunk.js.LICENSE",
     "static/media/bowl.svg": "/React-Pet-catalog/static/media/bowl.56edf2b2.svg",
     "static/media/cat.svg": "/React-Pet-catalog/static/media/cat.872640e1.svg",
     "static/media/dog.svg": "/React-Pet-catalog/static/media/dog.9694d09e.svg",
@@ -25,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.cb7f9932.js",
-    "static/js/2.dfc677ac.chunk.js",
-    "static/css/main.15a2d206.chunk.css",
-    "static/js/main.f450dc1e.chunk.js"
+    "static/js/2.83d34195.chunk.js",
+    "static/css/main.b491be28.chunk.css",
+    "static/js/main.be855928.chunk.js"
   ]
 }
