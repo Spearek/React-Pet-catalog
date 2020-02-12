@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import  {connect} from 'react-redux';
-import  {fetchUserPetsAsync} from '../../store/actions/actionCreators';
+import  {fetchUserPetsAsync,petRemovalAsync} from '../../store/actions/actionCreators';
 
 import Pets from '../Pets/Pets';
 
@@ -9,6 +9,10 @@ class MyPets extends Component {
 
     componentDidMount(){
         this.props.fetchPets(this.props.id,this.props.needToFetch);
+    }
+
+    removePetHandler = (petId) =>{
+      this.props.removePet(petId,this.props.id,this.props.userPets,this.props.token)
     }
 
     render(){
@@ -29,6 +33,7 @@ class MyPets extends Component {
                 petList={this.props.userPets}
                 userId={this.props.id}
                 visiblity='default'
+                click={this.removePetHandler}
                 myPetsSection
                 />
                 {nonePets}
@@ -42,6 +47,7 @@ const mapStateToProps = state =>{
     return{
       id: state.userId,
       userPets: state.userPets,
+      token: state.token,
       needToFetch: state.needToFetch
     }
   };
@@ -49,6 +55,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch =>{
     return{
       fetchPets:(id,needToFetch)=>dispatch(fetchUserPetsAsync(id,needToFetch)),
+      removePet:(petId,userId,userPets,token)=>dispatch(petRemovalAsync(petId,userId,userPets,token))
     }
   }
 
