@@ -14,6 +14,7 @@ import SideDrawer from './components/Navigation/SideDrawer/SideDrawer';
 import Auth from './components/Auth/Auth';
 import Logout from './components/Auth/Logout/Logout';
 import {storePetsASync, localPetRemoval,sortPets, authCheckFromToken} from './store/actions/actionCreators';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -161,6 +162,7 @@ class App extends Component {
       />
       {(this.props.isAuthenticated) ? <div className='welcomeUser'><h3>Zalogowano jako: {loggedAs}</h3></div> : null}   
       {routes}
+      <Footer/>
 
     </div>
   );
