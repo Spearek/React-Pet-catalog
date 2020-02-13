@@ -14,13 +14,13 @@ Projekt uruchomi się domyślnie w przeglądarce na [http://localhost:3000](http
 
 ## Użytkowanie
 
-Wersję Live można znaleźć pod adresem [https://spearek.github.io/React-Pet-catalog/] (https://spearek.github.io/React-Pet-catalog/)
+Wersję Live można znaleźć pod adresem [https://spearek.github.io/React-Pet-catalog/](https://spearek.github.io/React-Pet-catalog/)
 
 Aby korzystać z wszystkich funkcjonalności projektu, należy być zalogowanym użytkownikiem.
 Można zarejestrować się bezpośrednio w aplikacji (rejestracja nie wymaga potwierdzenia maila).
 
 Można również zalogować się za pośrednictwem danych testowych:
 
-*Login: testuser@test.pl*
+*Login: testuser@test.pl*<br/>
 *Hasło: testtest*
 
