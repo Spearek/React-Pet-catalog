@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import  {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import * as actions from '../../store/actions/index';
@@ -6,92 +6,80 @@ import Spinner from '../UI/Spinner/Spinner';
 
 import classes from './Auth.module.css';
 
-class Auth extends Component {
+const Auth = (props) => {
 
-    state={
-        email:'',
-        pass:'',
-        haveAccount:true
-    }
-    authMethodHandler = () =>{
-        if (this.props.err){
-            this.props.removeErrInfo();
+    const [emailInput,setEmailInput] = useState('');
+    const [passwordInput,setPasswordInput] = useState('');
+    const [accountStatus, setAccountStatus] = useState(true);
+
+    const authMethodHandler = () =>{
+        if (props.err){
+            props.removeErrInfo();
         }
-
-        this.setState((prevState)=>{
-            return{haveAccount:!prevState.haveAccount}
-        })
-        
+        setAccountStatus(!accountStatus);      
     }
 
-    inputChangeHandler = (event, type) =>{
+    const inputChangeHandler = (event, type) =>{
         let value = event.target.value;
         if (type === 'email'){
-            this.setState({email :value})
+            setEmailInput(value)
+        }else{
+            setPasswordInput(value)
         }
-        this.setState({pass :value})
-
     }
 
-    tryToAuthHandler = (event) =>{
+    const tryToAuthHandler = (event) =>{
         event.preventDefault();
-        this.props.tryToAuth(this.state.email,this.state.pass,this.state.haveAccount,this.props.err);
+        props.tryToAuth(emailInput,passwordInput,accountStatus,props.err);
     }
-    
-    render(){
         
-        let redirect = null;
-        if(this.props.isAuthenticated){
-            redirect = <Redirect to='/'/>
-        }
-        let title = 'Zaloguj się';
-        let info = (
+    let redirect = null;
+    if(props.isAuthenticated){
+        redirect = <Redirect to='/'/>
+    }
+    let title = 'Zaloguj się';
+    let info = (
+        <React.Fragment>
+                <p>Nie masz jeszcze konta?</p>
+                <p>Nic straconego, kliknij <span onClick={authMethodHandler}>TUTAJ</span> aby przejść do Rejestracji</p>
+        </React.Fragment>);
+
+    if (!accountStatus){
+        title = 'Zarejestruj się';
+        
+        info = (
             <React.Fragment>
-                    <p>Nie masz jeszcze konta?</p>
-                    <p>Nic straconego, kliknij <span onClick={this.authMethodHandler}>TUTAJ</span> aby przejść do Rejestracji</p>
+                    <p>Masz już konto?</p>
+                    <p>Świetnie, przejdź <span onClick={authMethodHandler}>TUTAJ</span> aby zalogować się do aplikacji.</p>
             </React.Fragment>);
-
-        if (!this.state.haveAccount){
-            title = 'Zarejestruj się';
-            
-            info = (
-                <React.Fragment>
-                        <p>Masz już konto?</p>
-                        <p>Świetnie, przejdź <span onClick={this.authMethodHandler}>TUTAJ</span> aby zalogować się do aplikacji.</p>
-                </React.Fragment>);
-        }
-
-        let authForm = (
-            <React.Fragment>
-                <h2>{title}</h2>
-                <p>{title} w aplikacji aby w pełni korzystać z jej funkcjonalności.</p>
-                <p>Dodawaj nowe zwierzaki, przeglądaj już dodane i twórz własną kolekcję!</p>
-                <form className={classes.authForm} onSubmit={this.tryToAuthHandler}>
-                    <input type="email" placeholder="Adres email" required onChange={(event)=>this.inputChangeHandler(event,'email')}/>
-                    <input type="password" placeholder="Hasło" required onChange={(event)=>this.inputChangeHandler(event,'pass')}/>
-                    <span>{this.props.err}</span>
-                    <button type="submit">{title}</button>    
-                </form>
-                {info}
-            </React.Fragment>
-        )
-
-        if (this.props.loading){
-            authForm = <Spinner/>
-        }
-
-        
-
-
-        return(
-            <div className={classes.authContainer}>
-                {redirect}
-                {authForm}    
-            </div>
-
-        )
-
     }
+
+    let authForm = (
+        <React.Fragment>
+            <h2>{title}</h2>
+            <p>{title} w aplikacji aby w pełni korzystać z jej funkcjonalności.</p>
+            <p>Dodawaj nowe zwierzaki, przeglądaj już dodane i twórz własną kolekcję!</p>
+            <form className={classes.authForm} onSubmit={tryToAuthHandler}>
+                <input type="email" placeholder="Adres email" required onChange={(event)=>inputChangeHandler(event,'email')}/>
+                <input type="password" placeholder="Hasło" required onChange={(event)=>inputChangeHandler(event,'pass')}/>
+                <span>{props.err}</span>
+                <button type="submit">{title}</button>    
+            </form>
+            {info}
+        </React.Fragment>
+    )
+
+    if (props.loading){
+        authForm = <Spinner/>
+    }
+
+    return(
+        <div className={classes.authContainer}>
+            {redirect}
+            {authForm}    
+        </div>
+
+    )
 }
 
 const mapStateToProps = state =>{
