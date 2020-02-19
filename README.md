@@ -30,6 +30,8 @@ Projekt został stworzony w dwóch różnych wersjach, w celu zestawienia odmien
 Pierwsze z wersji (dostępna na `master`), jest wersją opierającą się o ***class components*** , ***lifecycle methods*** oraz ***Reduxa***.
 Do tej też wersji prowadzi wersja live.
 
-W wersji drugiej (dostępnej na gałęzi `hooks-and-redux`), aplikacja opiera się wyłącznie o ***komponenty funkcyjne*** wraz z ***react hooks*** - tu nadal korzystam z  ***Reduxa***
+W wersji drugiej (dostępnej na gałęzi `hooks-and-redux`), aplikacja opiera się wyłącznie o ***komponenty funkcyjne*** wraz z ***react hooks*** - tu nadal korzystam z  ***Reduxa***.
+
+Obydwie wersje są w pełni fukcjonalne.
 
 W najbliższym czasie pojawi się trzecia wersja w której ***Redux*** zostanie zastąpiony ***Context API*** - więcej informacji wkrótce..
