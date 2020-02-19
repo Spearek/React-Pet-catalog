@@ -5,13 +5,11 @@ import  * as actions from '../../store/actions/index';
 import Pets from '../Pets/Pets';
 
 
-class PetCollection extends Component{
-
-    render(){
+const PetCollection = props =>{
 
         let favoritePets = null;
-        if(this.props.allPets){
-            favoritePets = this.props.allPets.filter(el => el.likedBy).filter(el => el.likedBy.some(el => el === this.props.id ));
+        if(props.allPets){
+           favoritePets = props.allPets.filter(el => el.likedBy).filter(el => el.likedBy.some(el => el === props.id ));
         }
         let noneFavorites = null;
         if (favoritePets && favoritePets.length < 1){
@@ -22,17 +20,14 @@ class PetCollection extends Component{
                 <h2>Lista obserwowanych Zwierzaków</h2>
                 <Pets
                 petList={favoritePets}
-                userId={this.props.id}
-                click={this.props.removePet}
+                userId={props.id}
+                click={props.removePet}
                 visiblity='default'/>
                 {noneFavorites}
                 
             </div>
             
         )
-    }
-
-    
 }
 
 const mapStateToProps = state =>{
