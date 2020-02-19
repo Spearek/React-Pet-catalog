@@ -17,7 +17,6 @@ export const petRemovalAsync = (petId,userId,userPets,token) =>{
             axios.delete(`/pets/${petId}.json?auth=` + token)
                     .then(response=>{
                         dispatch(localPetRemoval(petId))
-                        console.log(response.data)
                     })
                     .catch(err =>{
                         console.log(err.response.data)

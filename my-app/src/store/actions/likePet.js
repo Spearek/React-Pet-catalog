@@ -35,7 +35,6 @@ export const likePetAsync = (token,petId,userId,pets) =>{
                     axios.delete(`/pets/${petId}/likedBy/${userPosition}.json?auth=` + token)
                     .then(response=>{
                         dispatch(likePetUpdate(petId,userId,pets));
-                        console.log(response.data)
                     })
                     .catch(err =>{
                         console.log(err.response.data)
@@ -46,7 +45,6 @@ export const likePetAsync = (token,petId,userId,pets) =>{
                     axios.patch(`/pets/${petId}/likedBy.json?auth=` + token,{[likedPosition]: userId})
                     .then(response=>{
                         dispatch(likePetUpdate(petId,userId,pets))
-                        console.log(response.data)
                     })
                     .catch(err =>{
                         console.log(err.response.data)
