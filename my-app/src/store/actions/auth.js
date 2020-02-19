@@ -65,7 +65,6 @@ export const authAsync = (email,pass,haveAcc,err) =>{
         } 
         axios.post(postURL,userData)
             .then(response=>{
-                console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.idToken);
                 localStorage.setItem('userId', response.data.localId);
@@ -75,7 +74,6 @@ export const authAsync = (email,pass,haveAcc,err) =>{
                 dispatch(authSucceed(response.data.idToken,response.data.localId))
               })
             .catch(err =>{
-                console.log(err.response.data.error);
                 dispatch(authFailed(err.response.data.error))
             })
         

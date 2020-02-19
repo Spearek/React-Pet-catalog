@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React from 'react';
 import  {connect} from 'react-redux';
 
 import emptyLike from '../../../../assets/like_icons/love_gray.svg';
