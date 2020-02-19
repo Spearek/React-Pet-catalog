@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState , useEffect} from 'react';
 import {Route} from 'react-router-dom';
 import  {connect} from 'react-redux';
 
@@ -18,34 +18,45 @@ import Footer from './components/Footer/Footer';
 
 
 
-class App extends Component {
-  state={
-    speciesSelectVal: 'default',
-    modalStatus:false,
-    sideDrawerOpen:false
-  }
+const App = props => {
 
-  componentDidMount (){
-    this.props.getPets();
-    this.props.authCheck();
-  }
+  const [speciesSelectVal,setSpeciesSelectVal] = useState('default');
+  const [modalStatus,setModalStatus] = useState(false);
+  const [sideDrawerOpen,setSideDrawerOpen] = useState(false);
+
+  useEffect(()=>{
+    props.getPets();
+    props.authCheck();
+  },[])
   
-  speciesFilterHandler = (event)=>{
-    this.setState({speciesSelectVal: event.target.value});
+  const speciesFilterHandler = (event)=>{
+    setSpeciesSelectVal(event.target.value);
   }
 
-
-  modalStatusHandler = (status) =>{
-    this.setState({modalStatus:status})
+  const modalStatusHandler = (status) =>{
+    setModalStatus(status);
     }
 
-  sideDrawerHandler = () =>{
-    this.setState( ( prevState ) => {
-      return { sideDrawerOpen: !prevState.sideDrawerOpen };
-  } );
+  const sideDrawerHandler = () =>{
+    setSideDrawerOpen(!sideDrawerOpen)
   }
 
-  render(){
+  const cockpitRouteFragment = (
+    <Cockpit
+      selected={speciesSelectVal}
+      change={speciesFilterHandler}
+      speciesList={props.species}
+      sort={props.sortPets}
+      {...props}/>
+  )
+  const petsRouteFragment = (
+    <Pets
+      petList={props.pets} 
+      click={props.removePet}
+      visiblity={speciesSelectVal}
+      userId={props.id}
+      {...props}/>
+  )
 
     let routes = (
       <React.Fragment>
@@ -53,42 +64,22 @@ class App extends Component {
         <Route path='/React-Pet-Catalog' exact render={(props)=>{
           return(
             <React.Fragment>
-              <Cockpit
-                selected={this.state.speciesSelectVal}
-                change={this.speciesFilterHandler}
-                speciesList={this.props.species}
-                sort={this.props.sortPets}
-                {...props}/>
-              <Pets
-                petList={this.props.pets} 
-                click={this.props.removePet}
-                visiblity={this.state.speciesSelectVal}
-                userId={this.props.id}
-                {...props}/>
+              {cockpitRouteFragment}
+              {petsRouteFragment}
             </React.Fragment>   
           )}}/>
         <Route path='/' exact render={(props)=>{
           return( 
             <React.Fragment>
-              <Cockpit
-                selected={this.state.speciesSelectVal}
-                change={this.speciesFilterHandler}
-                speciesList={this.props.species}
-                sort={this.props.sortPets}
-                {...props}/>
-              <Pets
-                petList={this.props.pets} 
-                click={this.props.removePet}
-                visiblity={this.state.speciesSelectVal}
-                userId={this.props.id}
-                {...props}/>
+              {cockpitRouteFragment}
+              {petsRouteFragment}
             </React.Fragment>
           
           )}}/>    
       </React.Fragment>
     )
 
-    if(this.props.isAuthenticated){
+    if(props.isAuthenticated){
       routes = (
         <React.Fragment>
           <Route path='/my-collection' component={PetCollection}/>
@@ -96,37 +87,17 @@ class App extends Component {
           <Route path='/authorisation' component={Auth}/>
           <Route path='/logout' component={Logout}/>
           <Route path='/React-Pet-Catalog' exact render={(props)=>{
-          return(
+            return(
             <React.Fragment>
-              <Cockpit
-                selected={this.state.speciesSelectVal}
-                change={this.speciesFilterHandler}
-                speciesList={this.props.species}
-                sort={this.props.sortPets}
-                {...props}/>
-              <Pets
-                petList={this.props.pets} 
-                click={this.props.removePet}
-                visiblity={this.state.speciesSelectVal}
-                userId={this.props.id}
-                {...props}/>
+              {cockpitRouteFragment}
+              {petsRouteFragment}
             </React.Fragment>   
           )}}/>
         <Route path='/' exact render={(props)=>{
           return( 
             <React.Fragment>
-              <Cockpit
-                selected={this.state.speciesSelectVal}
-                change={this.speciesFilterHandler}
-                speciesList={this.props.species}
-                sort={this.props.sortPets}
-                {...props}/>
-              <Pets
-                petList={this.props.pets} 
-                click={this.props.removePet}
-                visiblity={this.state.speciesSelectVal}
-                userId={this.props.id}
-                {...props}/>
+              {cockpitRouteFragment}
+              {petsRouteFragment}
             </React.Fragment>
           
           )}}/> 
@@ -142,31 +113,30 @@ class App extends Component {
     <div className="App" style={{backgroundImage:`url(${backgroundImg})`}}>
 
       <Toolbar
-      modalHandler={this.modalStatusHandler}
-      isDrawerOpen={this.state.sideDrawerOpen}
-      burgerClicked={this.sideDrawerHandler}
-      isAuth={this.props.isAuthenticated}
+      modalHandler={modalStatusHandler}
+      isDrawerOpen={sideDrawerOpen}
+      burgerClicked={sideDrawerHandler}
+      isAuth={props.isAuthenticated}
       />
       
       <SideDrawer
-      modalHandler={this.modalStatusHandler}
-      show={this.state.sideDrawerOpen}
-      clicked={this.sideDrawerHandler}
-      isAuth={this.props.isAuthenticated}/>
+      modalHandler={modalStatusHandler}
+      show={sideDrawerOpen}
+      clicked={sideDrawerHandler}
+      isAuth={props.isAuthenticated}/>
 
       <NewPet
-      species={this.props.species}
-      modalStatus={this.state.modalStatus}
-      modalHandler={this.modalStatusHandler}
-      isAuth={this.props.isAuthenticated}
+      species={props.species}
+      modalStatus={modalStatus}
+      modalHandler={modalStatusHandler}
+      isAuth={props.isAuthenticated}
       />
-      {(this.props.isAuthenticated) ? <div className='welcomeUser'><h3>Zalogowano jako: {loggedAs}</h3></div> : null}   
+      {(props.isAuthenticated) ? <div className='welcomeUser'><h3>Zalogowano jako: {loggedAs}</h3></div> : null}   
       {routes}
       <Footer/>
 
     </div>
   );
-}
 }
 
 const mapStateToProps = state =>{
