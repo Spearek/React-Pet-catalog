@@ -5,32 +5,31 @@ import emptyLike from '../../../../assets/like_icons/love_gray.svg';
 import like from '../../../../assets/like_icons/love.svg';
 import * as actions from '../../../../store/actions/index';
 
-class Favorites extends Component {
+const Favorites = props => {
 
-    clickHandler = () =>{
-        this.props.likeClicked(this.props.token,this.props.petId,this.props.userId,this.props.petArr);
+    const clickHandler = () =>{
+
+        props.likeClicked(props.token,props.petId,props.userId,props.petArr);
     }
-
-    render(){
 
         let iconStatus = emptyLike;
 
-        if(this.props.isLiked){
+        if(props.isLiked){
             iconStatus = like;
         }
 
         const iconStyles = {
             height: '30px',
-            idth:'30px',
+            width:'30px',
             position: 'absolute',
             bottom: '15px',
             right: '20px',
             cursor: 'pointer'
         }
 
-        let likeImage = <img src={iconStatus} style={iconStyles} alt='heart icon' onClick={this.clickHandler}/>
+        let likeImage = <img src={iconStatus} style={iconStyles} alt='heart icon' onClick={clickHandler}/>
 
-        if(!this.props.isAuthenticated || this.props.myPetsSection){
+        if(!props.isAuthenticated || props.myPetsSection){
           likeImage = null;
         }
 
@@ -41,7 +40,6 @@ class Favorites extends Component {
           </React.Fragment>         
 
         )
-    }
 }
 
 const mapStateToProps = state =>{
