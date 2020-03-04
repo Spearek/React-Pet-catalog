@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/React-Pet-catalog/static/css/main.b491be28.chunk.css",
-    "main.js": "/React-Pet-catalog/static/js/main.be855928.chunk.js",
-    "main.js.map": "/React-Pet-catalog/static/js/main.be855928.chunk.js.map",
+    "main.js": "/React-Pet-catalog/static/js/main.890fa304.chunk.js",
+    "main.js.map": "/React-Pet-catalog/static/js/main.890fa304.chunk.js.map",
     "runtime-main.js": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js",
     "runtime-main.js.map": "/React-Pet-catalog/static/js/runtime-main.cb7f9932.js.map",
-    "static/js/2.83d34195.chunk.js": "/React-Pet-catalog/static/js/2.83d34195.chunk.js",
-    "static/js/2.83d34195.chunk.js.map": "/React-Pet-catalog/static/js/2.83d34195.chunk.js.map",
+    "static/js/2.08f398ba.chunk.js": "/React-Pet-catalog/static/js/2.08f398ba.chunk.js",
+    "static/js/2.08f398ba.chunk.js.map": "/React-Pet-catalog/static/js/2.08f398ba.chunk.js.map",
     "index.html": "/React-Pet-catalog/index.html",
-    "precache-manifest.94a16a8fd08a21d1b4a49e804f2efa65.js": "/React-Pet-catalog/precache-manifest.94a16a8fd08a21d1b4a49e804f2efa65.js",
+    "precache-manifest.6521e0779d79a1b47fefddfbdfec1f83.js": "/React-Pet-catalog/precache-manifest.6521e0779d79a1b47fefddfbdfec1f83.js",
     "service-worker.js": "/React-Pet-catalog/service-worker.js",
     "static/css/main.b491be28.chunk.css.map": "/React-Pet-catalog/static/css/main.b491be28.chunk.css.map",
-    "static/js/2.83d34195.chunk.js.LICENSE": "/React-Pet-catalog/static/js/2.83d34195.chunk.js.LICENSE",
+    "static/js/2.08f398ba.chunk.js.LICENSE": "/React-Pet-catalog/static/js/2.08f398ba.chunk.js.LICENSE",
     "static/media/bowl.svg": "/React-Pet-catalog/static/media/bowl.56edf2b2.svg",
     "static/media/cat.svg": "/React-Pet-catalog/static/media/cat.872640e1.svg",
     "static/media/dog.svg": "/React-Pet-catalog/static/media/dog.9694d09e.svg",
@@ -21,12 +21,15 @@
     "static/media/love.svg": "/React-Pet-catalog/static/media/love.7a8ade7e.svg",
     "static/media/love_gray.svg": "/React-Pet-catalog/static/media/love_gray.1b28dbee.svg",
     "static/media/paws.svg": "/React-Pet-catalog/static/media/paws.fedff2d4.svg",
+    "static/media/placeholder_cat.svg": "/React-Pet-catalog/static/media/placeholder_cat.1c78e5d1.svg",
+    "static/media/placeholder_dog.svg": "/React-Pet-catalog/static/media/placeholder_dog.5057ae04.svg",
+    "static/media/placeholder_rodent.svg": "/React-Pet-catalog/static/media/placeholder_rodent.5b3f5b57.svg",
     "static/media/singlePaw.svg": "/React-Pet-catalog/static/media/singlePaw.dce15f4f.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.cb7f9932.js",
-    "static/js/2.83d34195.chunk.js",
+    "static/js/2.08f398ba.chunk.js",
     "static/css/main.b491be28.chunk.css",
-    "static/js/main.be855928.chunk.js"
+    "static/js/main.890fa304.chunk.js"
   ]
 }
