@@ -52,10 +52,15 @@ const NewPet = props => {
         }
 
     const addFoodHandler = () =>{
-        const foodList = [...favFoodList];
-        foodList.push(currentFood);
-        setFavFoodList(foodList);
-        setCurrentFood('');
+        const withSpacesRemoved = currentFood.replace(/\s+/g, '');
+        if (withSpacesRemoved.length < 3 || withSpacesRemoved.length > 15) {
+            window.alert('Ulubione jedzenie musi mieć pomiędzy 3 a 15 znaków!');
+        } else {
+            const foodList = [...favFoodList];
+            foodList.push(currentFood);
+            setFavFoodList(foodList);
+            setCurrentFood('');
+            }
         }
 
     const removeFoodHandler = (pos) =>{
