@@ -13,6 +13,9 @@ import dogIcon from "../../assets/modal_icons/dog.svg";
 import hamsterIcon from "../../assets/modal_icons/hamster.svg";
 import pawsIcon from "../../assets/modal_icons/paws.svg";
 import plusIcon from "../../assets/photoshop slices/plus.png";
+import placeholder_Cat from "../../assets/placeholders/placeholder_cat.svg";
+import placeholder_Dog from "../../assets/placeholders/placeholder_dog.svg";
+import placeholder_Rodent from "../../assets/placeholders/placeholder_rodent.svg";
 import * as actions from '../../store/actions/index';
 
 
@@ -79,6 +82,22 @@ class NewPet extends Component {
             photo: this.state.newPet[3].value,
             addedBy: this.props.user
             }
+        if (adopted.photo.length <= 10) {
+            switch (adopted.species) {
+                case 'Cat':
+                  adopted.photo = placeholder_Cat;
+                  break;
+                case 'Dog':
+                  adopted.photo = placeholder_Dog;
+                  break;
+                case 'Rodent':
+                  adopted.photo = placeholder_Rodent;
+                  break;
+                default:
+                  alert( "Should't reach that. Please refresh App" );
+              }
+        }
+        
         
         this.props.addPet(adopted,this.props.token,this.props.haveErr);
 
