@@ -53,11 +53,16 @@ class NewPet extends Component {
         this.setState({currentFood: event.target.value})
         }
 
-    addFoodHandler = () =>{
-        const foodList = [...this.state.favFoodList];
-        foodList.push(this.state.currentFood);
-        this.setState({favFoodList:foodList,currentFood:''})
+    addFoodHandler = () => {
+        const withSpacesRemoved = this.state.currentFood.replace(/\s+/g, '');
+        if (withSpacesRemoved.length < 3 || withSpacesRemoved.length > 15) {
+            window.alert('Ulubione jedzenie musi mieć pomiędzy 3 a 15 znaków!');
+        } else {
+            const foodList = [...this.state.favFoodList];
+            foodList.push(this.state.currentFood);
+            this.setState({ favFoodList: foodList, currentFood: '' })
         }
+    }
 
     removeFoodHandler = (pos) =>{
         const newFoodArr = [...this.state.favFoodList];
